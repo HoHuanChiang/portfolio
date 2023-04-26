@@ -1,0 +1,40 @@
+.textContent {
+    margin: 20px 0;
+    word-wrap: break-word;
+}
+
+.hideContent {
+    opacity: 0;
+}
+
+.blinking {
+    position: relative;
+}
+
+.blinking::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 1;
+}
+
+.blinkingAnimation {
+    animation: 1s 3 blinkingAnimation;
+    opacity: 0;
+}
+
+@keyframes blinkingAnimation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
