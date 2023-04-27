@@ -11,6 +11,7 @@ import Home from "../Home/Home";
 import WorkExperience from "../WorkExperience/WorkExperience";
 import Project from "../Project/Project";
 import Resume from "../Resume/Resume";
+import Education from "../Education/Education";
 
 interface CustomPathProps {
     path: string;
@@ -20,6 +21,7 @@ interface CustomPathProps {
 
 enum Path {
     Home = "/",
+    Education = "/Education",
     WorkExperience = "/workExperience",
     Projects = "/project",
     Resume = "/resume",
@@ -37,7 +39,12 @@ const MasterLayout = () => {
         {
             path: Path.Home,
             isCurrentPage: isCurrentPage(Path.Home),
-            name: "Home",
+            name: "About Me",
+        },
+        {
+            path: Path.Education,
+            isCurrentPage: isCurrentPage(Path.Education),
+            name: "Education & Skills",
         },
         {
             path: Path.WorkExperience,
@@ -81,13 +88,14 @@ const MasterLayout = () => {
                 </div>
                 <div className={"innerContent"}>
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path={Path.Home} element={<Home />} />
+                        <Route path={Path.Education} element={<Education />} />
                         <Route
-                            path="workExperience"
+                            path={Path.WorkExperience}
                             element={<WorkExperience />}
                         />
-                        <Route path="project" element={<Project />} />
-                        <Route path="resume" element={<Resume />} />
+                        <Route path={Path.Projects} element={<Project />} />
+                        <Route path={Path.Resume} element={<Resume />} />
                     </Routes>
                 </div>
             </div>

@@ -1,0 +1,93 @@
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.education, .skill {
+    width: 50%;
+    font-size: 18px;
+}
+
+.educationGroup {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 40px;
+    /* filter: drop-shadow(16px 16px 20px red) ; */
+}
+
+.educationItem{
+    display: flex;
+    flex-direction: column;  
+    padding: 20px 70px;
+    padding-bottom: 50px;
+    position: relative;
+    border-radius: 10px;
+    color: white;
+    overflow: hidden;
+}
+
+.educationItem::before{
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    background: black;
+    border-radius: 100%;
+    background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255, 1) 140%);
+    /* background-image: url(https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871);
+    background-repeat: repeat-x;
+    background-position: 0 -100%; */
+    width: 200%;
+    height: 150%;
+    z-index: -1;
+    animation: 2s ease-out flagDrop;
+}
+
+@keyframes flagDrop {
+    0% {
+        top: -10%;
+    }
+    100% {
+        top: -50%;
+    }
+}
+
+.educationItem img{
+    background:white;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.educationItem .description {
+    padding: 12px 0px;
+    text-align: center;
+}
+
+.educationItem .description:not(:last-of-type) {
+    border-bottom: 1px dotted white;
+}
+
+.educationItem .description .descriptionName{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.education .title, .skill .title {
+    font-size: 60px;
+    /* text-shadow: grey 10px 5px 10px; */
+    letter-spacing: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.subSkills {
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
