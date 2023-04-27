@@ -15,7 +15,6 @@
     align-items: center;
     justify-content: center;
     column-gap: 40px;
-    /* filter: drop-shadow(16px 16px 20px red) ; */
 }
 
 .educationItem{
@@ -27,6 +26,19 @@
     border-radius: 10px;
     color: white;
     overflow: hidden;
+    animation: 5s ease-in-out infinite float;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-10px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
 }
 
 .educationItem::before{
@@ -37,13 +49,11 @@
     background: black;
     border-radius: 100%;
     background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255, 1) 140%);
-    /* background-image: url(https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871);
-    background-repeat: repeat-x;
-    background-position: 0 -100%; */
     width: 200%;
     height: 150%;
     z-index: -1;
     animation: 2s ease-out flagDrop;
+    overflow: hidden;
 }
 
 @keyframes flagDrop {

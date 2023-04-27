@@ -1,0 +1,70 @@
+.workEpContainer{
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    position: relative;
+    padding-left: 200px;
+}
+
+.companies {
+    height: 100%;
+    position: relative;
+    flex: 1;
+}
+
+.companies > div {
+    display: flex;
+    height: 28%;
+    align-items: center;
+}
+
+.companies > div:nth-of-type(2) {
+    margin-top: 4%;
+    margin-left: 15vw;
+}
+
+.companies > div:nth-of-type(3){
+    margin-top: 4%;
+    margin-left: 30vw;
+}
+.company {
+    width: 500px;
+    background: #2a2a2a;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.company .title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.company .position{
+    margin: 10px 0;
+}
+
+.company::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* left: -200px;
+    width: 200px; */
+    border-top: 1px dotted black;
+}
+
+.catchpoint::before {
+    left: -200px;
+    width: 200px;
+}
+
+.cgu::before {
+    left: calc(-200px - 15vw);
+    width: calc(200px + 15vw);
+}
+
+.kerson::before {
+    left: calc(-200px - 30vw);
+    width: calc(200px + 30vw);
+}
