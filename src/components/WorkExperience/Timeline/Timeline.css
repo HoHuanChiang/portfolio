@@ -7,61 +7,110 @@
 }
 
 .workTimeline {
-    height: 28%;
+    height: 200px;
     position: relative;
 }
 
 .freeTimeline {
-    height: 8%;
-    border-left: 4px dashed black;
-    margin-left: 2px;
+    height: 50px;
+    border-left: 1px dashed white;
+    margin-left: 4px;
 }
 
-.workTimeline > div{
+.workTimeline .stick {
     height: 100%;
     width: 10px;
-    background:black;
+    background: #ff03e2;
     position: relative;
+    box-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #ff03e2,
+        0 0 82px #ff03e2,
+        0 0 92px #ff03e2,
+        0 0 102px #ff03e2,
+        0 0 151px #ff03e2;
+    z-index: 1;
 }
 
-.workTimeline::before {
+.workTimeline .topDot {
     width: 20px;
     height: 20px;
-    background: black;
+    background: #9aff03;
     content: '';
     position: absolute;
     border-radius: 50%;
-    transform: translate(-25%, -25%);
-    top: 0;
-    left: 0;
+    /* transform: translate(-10px, -10px); */
+    /* top: -10px;
+    left: -10px; */
+    top: -5px;
+    left: -5px;
+    transform-origin: center;
+    box-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #9aff03,
+        0 0 82px #9aff03,
+        0 0 92px #9aff03,
+        0 0 102px #9aff03,
+        0 0 151px #9aff03;
+    z-index: 2;
 }
 
-.workTimeline::after {
+.workTimeline .bottomDot {
     width: 20px;
     height: 20px;
-    background: black;
+    background: #9aff03;
     content: '';
     position: absolute;
     border-radius: 50%;
-    transform: translate(-25%, 25%);
-    bottom: 0;
-    left: 0;
+    bottom: -5px;
+    left: -5px;
+    transform-origin: center;
+    box-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #9aff03,
+        0 0 82px #9aff03,
+        0 0 92px #9aff03,
+        0 0 102px #9aff03,
+        0 0 151px #9aff03;
+    z-index: 2;
 }
 
-.workTimeline > span:first-of-type{
+/* 
+.workTimeline .bottomDot::before,
+.workTimeline .topDot::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background: #ff03e2;
+    border-radius: 50%;
+} */
+
+.workTimeline .topDate,
+.workTimeline .bottomDate {
+    color: white;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+.workTimeline>span:first-of-type {
     content: '';
     position: absolute;
     left: 20px;
     top: 0;
 }
 
-.workTimeline > span:last-of-type{
+.workTimeline>span:last-of-type {
     content: '';
     position: absolute;
     left: 20px;
     bottom: 0;
-}
-
-.freeTimeline {
-
 }

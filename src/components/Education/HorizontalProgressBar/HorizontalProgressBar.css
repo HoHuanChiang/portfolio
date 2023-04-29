@@ -1,17 +1,12 @@
-.h-progressBar{
+.h-progressBar {
     margin: 10px 0px;
     width: 100%;
     background: rgb(233, 230, 230);
     height: 8px;
     border-radius: 5px;
+    border-radius: 20px;
 }
 
-.progressBarAnimation {
-    animation: 2s ease slideAnimation;
-}
-
-@keyframes slideAnimation {
-    0% {
-        width: 0;
-    }
+.innerProgressBar {
+    border-radius: 20px;
 }

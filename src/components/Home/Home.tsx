@@ -4,7 +4,7 @@ import "./Home.css";
 
 const Home = () => {
     return (
-        <div className={"container"}>
+        <div className={"homeContainer"}>
             <div className={"aboutMe"}>
                 <EngineerTextAnimationGroup
                     textGroup={[

@@ -1,35 +1,51 @@
 .main {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .topNavbar {
     height: 80px;
     display: flex;
     align-items: center;
-    font-size: 40px;
+    font-size: 60px;
+    color: green;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding-left: 50px;
+    padding-top: 50px;
 }
 
 .content {
-    height: calc(100vh - 100px);
     display: flex;
 }
 
-.innerContent {
-    flex:1;
+.mainContent {
+    width: calc(100% - 200px);
+    /* position: absolute; */
+    margin-top: 80px;
+    margin-left: 200px;
+    padding: 20px;
+    box-sizing: border-box;
 }
+
 
 .leftNavbar {
     width: 200px;
     font-size: 20px;
     text-align: center;
     font-weight: bold;
+    color: green;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    z-index: 2;
 }
 
-.leftNavbar nav{
+.leftNavbar nav {
     margin-top: 80px;
     display: flex;
     flex-direction: column;
@@ -37,32 +53,33 @@
     align-items: center;
 }
 
-.leftNavbar nav a div{
+.leftNavbar nav a div {
     cursor: pointer;
     position: relative;
     padding: 20px;
     user-select: none;
 }
 
-.leftNavbar nav a{
+.leftNavbar nav a {
     text-decoration: none;
     color: inherit;
 }
 
-.leftNavbar nav a div:before{
+.leftNavbar nav a div:before {
     content: '';
     position: absolute;
-    top:0;
-    left:0;
-    height:100%;
-    width:100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     background: url('.././../images/circle.svg') no-repeat;
     background-size: contain;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
-    z-index:-1;
+    z-index: -1;
 }
 
-.leftNavbar nav a div:hover:before, .leftNavbar nav a div.isSelected:before{
+.leftNavbar nav a div:hover:before,
+.leftNavbar nav a div.isSelected:before {
     opacity: 1;
 }

@@ -12,7 +12,6 @@ const Project = () => {
     const TreeNodeVisualizerDescription = (
         <div className={"projectDescription"}>
             <div>
-                <div className={"title"}>Tree Node Visualizer</div>
                 <div>Languages & Tools - React | TypeScript</div>
                 <div className={"spacing"}>
                     Build React application for visualizing breadth-first search
@@ -21,7 +20,6 @@ const Project = () => {
                 </div>
             </div>
             <div className={"projectDemo"}>
-                <img src={require("../../images/treeNodeVisualizer.png")} />
                 <input type="button" value="Check it out" />
             </div>
         </div>
@@ -40,7 +38,6 @@ const Project = () => {
                 </div>
             </div>
             <div className={"projectDemo"}>
-                <img src={require("../../images/hsmap.png")} />
                 <input type="button" value="Check it out" />
             </div>
         </div>
@@ -59,9 +56,6 @@ const Project = () => {
                     patients and service records to managers through various
                     communication channels.
                 </div>
-            </div>
-            <div className={"projectDemo"}>
-                <img src={require("../../images/hsmap.png")} />
             </div>
         </div>
     );
@@ -111,7 +105,6 @@ const Project = () => {
 
     const onProjectTabClick = (index: number) => {
         const newProjects = [...projects];
-        // newProjects.forEach((project) => (project.isSelected = false));
         newProjects[index].isSelected = !newProjects[index].isSelected;
         console.log(newProjects[index].isSelected);
         setProjects(newProjects);
@@ -136,11 +129,13 @@ const Project = () => {
                                 {renderCube(
                                     project.isSelected ?? false,
                                     project.name,
-                                    project.ref?.current?.getBoundingClientRect()
-                                        .width
+                                    project.description
                                 )}
-                                {project.isSelected && project.description}
-                                {/* <div className={"title"}>{project.name}</div> */}
+                                {project.isSelected && (
+                                    <div className={"expandTitleName"}>
+                                        {project.name}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     );
@@ -149,12 +144,20 @@ const Project = () => {
         );
     };
 
-    const renderCube = (isSelected: boolean, name: string, width?: number) => {
-        width = width ?? 0;
-        const sizeCSS = isSelected ? `100%` : "150px";
+    const renderCube = (
+        isSelected: boolean,
+        name: string,
+        projectDescription: JSX.Element
+    ) => {
+        const sizeCSS = isSelected ? `70%` : "150px";
+        const heightCSS = isSelected ? `300px` : "150px";
+        const minWidthCSS = isSelected ? "500px" : "150px";
+        const textAlignCSS = isSelected ? "left" : "center";
         const cubeStyle: React.CSSProperties = {
             width: sizeCSS,
-            height: sizeCSS,
+            height: heightCSS,
+            minWidth: minWidthCSS,
+            textAlign: textAlignCSS,
         };
 
         const rightSideStyle: React.CSSProperties = {
@@ -179,10 +182,10 @@ const Project = () => {
         };
 
         const cubeClass = isSelected
-            ? "cube-start"
-            : "cubeSpinning cube-middle";
+            ? "cube-expand"
+            : "cubeSpinning cube-collapse";
 
-        const sideClass = isSelected ? "cubeSpinningOnce-1" : "";
+        const sideClass = isSelected ? "cubeSpinningOnce-1 " : "side-animation";
 
         return (
             <div className={`${!isSelected ? "shadow" : ""}`}>
@@ -191,43 +194,37 @@ const Project = () => {
                         className={`side right ${sideClass}`}
                         style={rightSideStyle}
                     >
-                        <span className={"rotate-45"}>
-                            {!isSelected && name}
-                        </span>
+                        <div className={"rotate-45"}>{!isSelected && name}</div>
                     </div>
                     <div
                         className={`side top ${sideClass}`}
                         style={topSideStyle}
                     >
-                        <span>{!isSelected && name}</span>
+                        <div>{!isSelected && name}</div>
                     </div>
                     <div
                         className={`side left ${sideClass}`}
                         style={leftSideStyle}
                     >
-                        <span className={"rotate45"}>
-                            {!isSelected && name}
-                        </span>
+                        <div className={"rotate45"}>{!isSelected && name}</div>
                     </div>
                     <div
                         className={`side bottom ${sideClass}`}
                         style={bottomSideStyle}
                     >
-                        <span>{!isSelected && name}</span>
+                        <div>{!isSelected && name}</div>
                     </div>
                     <div
                         className={`side front ${sideClass}`}
                         style={frontSideStyle}
                     >
-                        <span>{!isSelected && name}</span>
+                        <div>{!isSelected ? name : projectDescription}</div>
                     </div>
                     <div
                         className={`side back ${sideClass}`}
                         style={backSideStyle}
                     >
-                        <span className={"rotate180"}>
-                            {!isSelected && name}
-                        </span>
+                        <div className={"rotate180"}>{!isSelected && name}</div>
                     </div>
                 </div>
             </div>

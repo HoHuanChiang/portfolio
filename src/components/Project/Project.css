@@ -1,6 +1,5 @@
 .projectSectionContainer {
     width: 100%;
-    height: 100%;
     position: relative;
 }
 
@@ -11,21 +10,16 @@
     align-items: center;
     flex-wrap: wrap;
     height: 100%;
+    padding: 100px;
+    box-sizing: border-box;
 }
 
 .projectContainer {
     width: 50%;
     transition: height 1s ease;
-    height: 400px;
+    height: 500px;
+    /* margin-bottom: 40px; */
 }
-
-/* .projectContainer-collapse {
-    height: 50%;
-} */
-
-/* .projectContainer-expand {
-    height: 1000px;
-} */
 
 .projectTab {
     height: 100%;
@@ -37,15 +31,23 @@
 }
 
 .projectDescription {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
     display: flex;
-    padding: 20px;
+    /* padding: 20px; */
     flex-direction: column;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
     animation: 1.4s ease-in-out descriptionAnimation;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+
 
 @keyframes descriptionAnimation {
     0% {
@@ -84,6 +86,36 @@
     font-size: 25px;
 }
 
+.expandTitleName {
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 22px #00e1ff,
+        0 0 40px #00e1ff;
+    animation: 3s linear projectNameAnimation;
+    transform: translateY(30px);
+}
+
+@keyframes projectNameAnimation {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(30px);
+        opacity: 1;
+    }
+}
 
 /* Below are animatied cube css */
 
@@ -97,11 +129,17 @@
     bottom: 12px;
     left: 50%;
     height: 20px;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50px);
     width: 100px;
     border-radius: 50%;
     background-color: #888888;
     filter: blur(4px);
+}
+
+.cude-expand-container {
+    width: 200px;
+    /* min-width: 400px; */
+    height: 100%;
 }
 
 .cube {
@@ -110,16 +148,16 @@
     transition: all 2s ease;
 }
 
-.cube-middle {
+.cube-collapse {
     top: 40%;
     left: 40%;
     transform: translate(-50%, -50%);
 }
 
-.cube-start {
-    top: 0;
-    left: 0;
-    transform: none;
+.cube-expand {
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .cube:hover {
@@ -185,7 +223,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    color: white;
+    box-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 22px #00e1ff,
+        0 0 40px #00e1ff;
+}
+
+.side-animation {
+    animation: sideBlinking 3s infinite alternate;
 }
 
 .side .rotate-45 {
@@ -200,31 +248,103 @@
     transform: rotate(180deg);
 }
 
-.top {
-    background: #FFB7FF;
+@keyframes sideBlinking {
 
+    0% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 22px #00e1ff,
+            0 0 40px #00e1ff;
+    }
+
+    18% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 22px #0fa,
+            0 0 40px #0fa;
+    }
+
+    22% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 22px #ff03e2,
+            0 0 40px #ff03e2;
+    }
+
+    25% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 22px #00e1ff,
+            0 0 40px #00e1ff;
+    }
+
+    53% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 22px #00e1ff,
+            0 0 40px #00e1ff;
+    }
+
+    57% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 22px #0fa,
+            0 0 40px #0fa;
+    }
+
+    100% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 22px #ff03e2,
+            0 0 40px #ff03e2;
+
+    }
+
+    20%,
+    24%,
+    55% {
+        box-shadow: none;
+    }
+}
+
+.top {
+    background: #a1ce3f;
 }
 
 .right {
     transform-origin: left;
-    background: #C879FF;
+    background: #013026;
 }
 
 .bottom {
-    background: #FFB7FF;
+    background: #c874b2;
 }
 
 .front {
     transform-origin: bottom;
-    background: #3BF4FB;
+    background: #107e57;
 }
 
 .back {
-    background: #CAFF8A;
+    background: #014760;
     transform-origin: top;
 }
 
 .left {
     transform-origin: right;
-    background: #F9E7E7;
+    background: #cbe58e;
 }

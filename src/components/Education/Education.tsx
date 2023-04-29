@@ -1,14 +1,69 @@
 import React from "react";
 import "./Education.css";
+import { setAnimation } from "./Education.trigger";
 import HorizontalProgressBar from "./HorizontalProgressBar/HorizontalProgressBar";
 
+export interface SkillInfo {
+    name: string;
+    color: string;
+    score: number;
+}
+
+const SKILLS: SkillInfo[] = [
+    {
+        name: "React",
+        color: "#00e1ff",
+        score: 85,
+    },
+    {
+        name: "TypeScript/JavaScript",
+        color: "#ff03e2",
+        score: 85,
+    },
+    {
+        name: "JQuery",
+        color: "#0fa",
+        score: 80,
+    },
+    {
+        name: "GraphQL",
+        color: "#9aff03",
+        score: 70,
+    },
+    {
+        name: ".NET Core",
+        color: "#00e1ff",
+        score: 75,
+    },
+    {
+        name: "C#",
+        color: "#ff03e2",
+        score: 75,
+    },
+    {
+        name: "SQL",
+        color: "#0fa",
+        score: 70,
+    },
+    {
+        name: "Java",
+        color: "#9aff03",
+        score: 50,
+    },
+];
+
 const Education = () => {
+    const ref = React.useRef<HTMLDivElement | null>(null);
+    React.useEffect(() => {
+        setAnimation(ref.current, SKILLS);
+    }, []);
+
     return (
-        <div className={"container"}>
+        <div className={"educationContainer"} ref={ref}>
             <div className={"education"}>
                 <div className={"title"}>Education</div>
                 <div className={"educationGroup"}>
-                    <div className={"educationItem"}>
+                    <div className={"educationItem"} id={"riceEducation"}>
                         <img src={require("../../images/rice-logo.png")} />
                         <div className={"description"}>
                             <div className={"descriptionName"}>Name</div>
@@ -35,7 +90,7 @@ const Education = () => {
                             <span>TX, United States</span>
                         </div>
                     </div>
-                    <div className={"educationItem"}>
+                    <div className={"educationItem"} id={"cguEducation"}>
                         <img src={require("../../images/cgu-logo.png")} />
                         <div className={"description"}>
                             <div className={"descriptionName"}>Name</div>
@@ -46,7 +101,7 @@ const Education = () => {
                             <span>Aug. 2015 - Dec. 2019</span>
                         </div>
                         <div className={"description"}>
-                            <div className={"descriptionName"}>Degree</div>
+                            <div className={"descriptionNam"}>Degree</div>
                             <span>Bachelor's Degree</span>
                         </div>
                         <div className={"description"}>
@@ -67,86 +122,21 @@ const Education = () => {
             <div className={"skill"}>
                 <div className={"title"}>Skills</div>
                 <div>
-                    <div>
-                        <div>React</div>
-                        <div>
-                            <HorizontalProgressBar
-                                value={85}
-                                max={100}
-                                color={"#05445E"}
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <div>TypeScript/JavaScript</div>
-                        <div>
-                            <HorizontalProgressBar
-                                value={85}
-                                max={100}
-                                color={"#189AB4"}
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <div>JQuery</div>
-                        <div>
-                            <HorizontalProgressBar
-                                value={80}
-                                max={100}
-                                color={"#75E6DA"}
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <div>GraphQL</div>
-                        <div>
-                            <HorizontalProgressBar
-                                value={70}
-                                max={100}
-                                color={"#2E8BC0"}
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>.NET Core</div>
-                    <div>
-                        <HorizontalProgressBar
-                            value={75}
-                            max={100}
-                            color={"#05445E"}
-                        />
-                    </div>
-                </div>
-                <div>
-                    <div>C#</div>
-                    <div>
-                        <HorizontalProgressBar
-                            value={75}
-                            max={100}
-                            color={"#189AB4"}
-                        />
-                    </div>
-                </div>
-                <div>
-                    <div>SQL</div>
-                    <div>
-                        <HorizontalProgressBar
-                            value={70}
-                            max={100}
-                            color={"#75E6DA"}
-                        />
-                    </div>
-                </div>
-                <div>
-                    <div>Java</div>
-                    <div>
-                        <HorizontalProgressBar
-                            value={50}
-                            max={100}
-                            color={"#2E8BC0"}
-                        />
-                    </div>
+                    {SKILLS.map((skill, index) => {
+                        return (
+                            <div>
+                                <div>{skill.name}</div>
+                                <div>
+                                    <HorizontalProgressBar
+                                        value={skill.score}
+                                        max={100}
+                                        color={skill.color}
+                                        innerContainerId={`progressBar${index}`}
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>
