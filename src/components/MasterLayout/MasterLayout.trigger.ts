@@ -54,7 +54,6 @@ export const updateName = (element: HTMLElement | null) => {
                 start: "top 90%",
                 end: "top 80%",
                 scrub: true,
-                markers: true,
             },
         }
     );

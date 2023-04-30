@@ -66,11 +66,6 @@ const MasterLayout = () => {
             isCurrentPage: isCurrentPage(Path.Education),
             name: "Education & Skills",
         },
-        {
-            path: Path.Resume,
-            isCurrentPage: isCurrentPage(Path.Resume),
-            name: "Resume",
-        },
     ];
 
     const onNavItemClick = (path: Path) => {
@@ -88,6 +83,10 @@ const MasterLayout = () => {
                 educationRef.current?.scrollIntoView({ behavior: "smooth" });
                 break;
         }
+    };
+
+    const onResumeBtnClick = () => {
+        window.open(require("../../Files/Resume.pdf"), "_blank");
     };
 
     const isHomePage = isCurrentPage(Path.Home);
@@ -118,6 +117,9 @@ const MasterLayout = () => {
                             </Link>
                         );
                     })}
+                    <div className={"resumeBtn"} onClick={onResumeBtnClick}>
+                        <span>Resume</span>
+                    </div>
                 </nav>
             </div>
             <div className={"mainContent"}>

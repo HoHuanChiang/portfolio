@@ -147,3 +147,7 @@
     background: rgb(0, 93, 204);
     padding: 5px 4px;
 }
+
+.resumeBtn {
+    cursor: pointer;
+}
