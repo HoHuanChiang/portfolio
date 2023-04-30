@@ -1,14 +1,19 @@
 .homeContainer {
     width: 100%;
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
 }
 
 .aboutMe {
-    width: 100vh;
-    height: 100%;
+    max-width: 900px;
     font-size: 35px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     color: green;
+    padding: 30px;
+    box-sizing: border-box;
+    word-wrap: break-word;
 }

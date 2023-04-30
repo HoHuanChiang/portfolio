@@ -62,6 +62,7 @@ const Education = () => {
         <div className={"educationContainer"} ref={ref} id={"educationSection"}>
             <div className={"education"}>
                 {/* <div className={"title"}>Education</div> */}
+                <div className={"sectionTitle"}>Education</div>
                 <div className={"educationGroup"}>
                     <div className={"educationItem"} id={"riceEducation"}>
                         <img src={require("../../images/rice-logo.png")} />
@@ -120,7 +121,7 @@ const Education = () => {
                 </div>
             </div>
             <div className={"skill"}>
-                {/* <div className={"title"}>Skills</div> */}
+                <div className={"sectionTitle"}>Skills</div>
                 <div>
                     {SKILLS.map((skill, index) => {
                         return (

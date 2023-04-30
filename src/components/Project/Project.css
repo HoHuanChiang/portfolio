@@ -10,11 +10,13 @@
     align-items: center;
     flex-wrap: wrap;
     height: 100%;
-    padding: 100px;
+    /* padding: 100px; */
     box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 .projectContainer {
+    min-width: 550px;
     width: 50%;
     transition: height 1s ease;
     height: 500px;

@@ -1,6 +1,9 @@
 import gsap, { Power3 } from "gsap";
 
-export const setAnimation = (element: HTMLElement | null) => {
+export const setAnimation = (
+    element: HTMLElement | null,
+    windowWidth: number
+) => {
     if (!element) {
         return;
     }
@@ -16,17 +19,15 @@ export const setAnimation = (element: HTMLElement | null) => {
     const companyClassIds = [
         {
             timelineId: "catchpointTimeline",
-            containerClassId: "company.catchpoint",
-            nextTimelineId: "catchpointNextTimeline",
+            containerClassId: "catchpoint",
         },
         {
             timelineId: "cguTimeline",
-            containerClassId: "company.cgu",
-            nextTimelineId: "cguNextTimeline",
+            containerClassId: "cgu",
         },
         {
             timelineId: "kersonTimeline",
-            containerClassId: "company.kerson",
+            containerClassId: "kerson",
         },
     ];
 
@@ -57,9 +58,9 @@ export const setAnimation = (element: HTMLElement | null) => {
                 height: 0,
             },
             {
-                height: "200px",
-                ease: Power3.easeIn,
+                height: "100%",
                 duration: eachCompanyAnimationSpeed,
+                ease: Power3.easeIn,
             }
         );
 
@@ -92,13 +93,14 @@ export const setAnimation = (element: HTMLElement | null) => {
             ),
             {
                 width: 0,
+                minWidth: 0,
             },
             {
-                width: `calc(200px + ${index * 15}vw)`,
-                ease: Power3.easeIn,
-                duration: eachCompanyAnimationSpeed,
+                width: `calc(200px + ${index * 15}%)`,
+                minWidth: "150px",
             }
         );
+
         animationT1.fromTo(
             element.querySelector(
                 `.${companyInfo.containerClassId} .companyContent`
@@ -113,9 +115,11 @@ export const setAnimation = (element: HTMLElement | null) => {
             }
         );
 
-        if (companyInfo.nextTimelineId) {
+        if (index !== companyClassIds.length - 1) {
             animationT1.fromTo(
-                element.querySelector(`#${companyInfo.nextTimelineId}`),
+                element.querySelector(
+                    `.${companyInfo.containerClassId} .freeTimeline`
+                ),
                 {
                     height: 0,
                 },

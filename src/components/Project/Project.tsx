@@ -42,9 +42,7 @@ const Project = () => {
     const HopeSimpsonDescription = (
         <div className={"projectDescription"}>
             <div>
-                <div>
-                    Languages & Tools - React | TypeScript | ScrollTrigger
-                </div>
+                <div>React | TypeScript | ScrollTrigger</div>
                 <div className={"spacing"}>
                     Front-end project which involved redesigning the UI, adding
                     various animations including scroll-based animations and
@@ -67,15 +65,12 @@ const Project = () => {
     const MedicalCaseDescription = (
         <div className={"projectDescription"}>
             <div>
-                <div>Languages & Tools - .NET Core MVC | C# | MS SQL</div>
+                <div>.NET Core MVC | C# | MS SQL</div>
                 <div className={"spacing"}>
                     Web model that dynamically generates questionnaires from
                     databases based on patient choices in the medical field. The
                     model allows for deeper, more personalized questioning to
-                    better evaluate the patient's health status. Additionally,
-                    it automates the sending of treatment care messages to
-                    patients and service records to managers through various
-                    communication channels.
+                    better evaluate the patient's health status.
                 </div>
             </div>
         </div>
@@ -84,10 +79,7 @@ const Project = () => {
     const ObstetricCareDescription = (
         <div className={"projectDescription"}>
             <div>
-                <div>
-                    Languages & Tools - .NET Core MVC | C# | MS SQL | Java |
-                    Swift
-                </div>
+                <div>.NET Core MVC | C# | MS SQL | Java | Swift</div>
                 <div className={"spacing"}>
                     Mobile apps (IOS, Android) and website for obstetric
                     patients that import real-time fetal and maternal health
@@ -177,7 +169,7 @@ const Project = () => {
         const cubeStyle: React.CSSProperties = {
             width: sizeCSS,
             height: heightCSS,
-            minWidth: minWidthCSS,
+            // minWidth: minWidthCSS,
             textAlign: textAlignCSS,
         };
 
@@ -254,6 +246,7 @@ const Project = () => {
 
     return (
         <div className={"projectSectionContainer"} id={"projectSection"}>
+            <div className={"sectionTitle"}>Projects</div>
             {renderProjectTabs()}
         </div>
     );

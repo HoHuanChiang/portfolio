@@ -1,14 +1,17 @@
 .educationContainer {
     display: flex;
     height: 100%;
-    padding: 100px 200px;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
+    max-width: 1400px;
+    align-items: center;
     box-sizing: border-box;
+    gap: 50px;
+    margin: 100px auto;
+    flex-wrap: wrap-reverse;
 }
 
 .education {
-    width: 800px;
     font-size: 18px;
     color: white;
 }
@@ -25,7 +28,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    column-gap: 40px;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
 .educationItem {
@@ -41,6 +45,7 @@
     box-shadow: 0 0 2px #fff, 0 0 8px #fff, 0 0 10px #fff, 0 0 30px #0fa inset, 0 0 36px #0fa, 0 0 40px #0fa, 0 0 52px #0fa, 0 0 30px #0fa;
 }
 
+
 .educationItem::after {
     content: "";
     background: #0fa;
@@ -51,7 +56,7 @@
     height: 50px;
     overflow: hidden;
     transform: perspective(0.2em) rotateX(10deg);
-    filter: blur(100px)
+    filter: blur(100px);
 }
 
 .educationItemBlinking {
@@ -174,4 +179,10 @@
 .subSkills {
     margin-left: 40px;
     margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1400px) {
+    .educationItem::after {
+        display: none;
+    }
 }

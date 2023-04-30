@@ -1,6 +1,7 @@
 .main {
     box-sizing: border-box;
     position: relative;
+    width: 100%;
 }
 
 .topNavbar {
@@ -16,7 +17,6 @@
     z-index: 2;
     padding-left: 50px;
     padding-top: 50px;
-    /* background: yellow; */
 }
 
 .topNavbar .fullName {
@@ -41,7 +41,7 @@
         0 0 5px #ff03e2,
         0 0 7px #ff03e2,
         0 0 10px #ff03e2,
-        0 0 12px #ff03e2,
+        0 0 12px #ff03e2 inset,
         0 0 15px #ff03e2,
         0 0 20px #ff03e2,
         0 0 25px #ff03e2,
@@ -51,10 +51,6 @@
     top: 60px;
     /* top: -100px; */
 
-}
-
-.content {
-    display: flex;
 }
 
 .mainContent {
@@ -107,6 +103,7 @@
     position: relative;
     padding: 20px;
     user-select: none;
+    transition: all 0.2s ease;
 }
 
 .leftNavbar nav a {
@@ -150,4 +147,17 @@
 
 .resumeBtn {
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+    .mainContent {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .leftNavbar {
+        display: none;
+    }
 }

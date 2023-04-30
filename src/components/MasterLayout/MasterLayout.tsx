@@ -125,7 +125,7 @@ const MasterLayout = () => {
             <div className={"mainContent"}>
                 <div ref={homeRef} id="homeRefContainer">
                     <Home />
-                </div>
+                </div>{" "}
                 <div ref={workRef} id="workRefContainer">
                     <WorkExperience />
                 </div>
