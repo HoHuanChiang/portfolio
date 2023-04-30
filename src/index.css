@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family: monospace, 'Comic Sans MS', sans-serif;
+  /* font-family: monospace, 'Comic Sans MS', sans-serif; */
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
   padding: 0;
   background: black;
 }

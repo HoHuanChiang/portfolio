@@ -9,33 +9,11 @@ export const setAnimation = (
     if (!element) {
         return;
     }
-    // ScrollTrigger.create({
-    //     trigger: element,
-    //     start: "top 40%",
-    //     end: "top top",
-
-    //     onEnter: () => {
-    //         element
-    //             .querySelector("#riceEducation")
-    //             ?.classList.add("educationItemBlinking");
-    //     },
-    // });
-
-    // ScrollTrigger.create({
-    //     trigger: element,
-    //     start: "top 30%",
-    //     end: "top top",
-    //     onEnter: () => {
-    //         element
-    //             .querySelector("#cguEducation")
-    //             ?.classList.add("educationItemBlinking");
-    //     },
-    // });
 
     const skillsTimeline = gsap.timeline({
         scrollTrigger: {
             trigger: element,
-            start: "top 20%",
+            start: "top 70%",
         },
     });
 
@@ -46,8 +24,7 @@ export const setAnimation = (
         },
         {
             opacity: 1,
-            boxShadow:
-                "0 0 7px #fff,0 0 10px #fff,0 0 21px #fff,0 0 42px #9aff03,0 0 52px #9aff03,0 0 62px #9aff03,0 0 78px #9aff03",
+            duration: 0.4,
         }
     );
     skillsTimeline.fromTo(
@@ -57,8 +34,7 @@ export const setAnimation = (
         },
         {
             opacity: 1,
-            boxShadow:
-                "0 0 7px #fff,0 0 10px #fff,0 0 21px #fff,0 0 42px #9aff03,0 0 52px #9aff03,0 0 62px #9aff03,0 0 78px #9aff03",
+            duration: 0.4,
         }
     );
     skills.forEach((skill, index) => {
@@ -69,8 +45,8 @@ export const setAnimation = (
             },
             {
                 width: `${skill.score}%`,
+                duration: 0.2,
             }
         );
     });
-    skillsTimeline.totalDuration(4);
 };

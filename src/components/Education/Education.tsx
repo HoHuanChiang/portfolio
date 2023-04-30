@@ -101,7 +101,7 @@ const Education = () => {
                             <span>Aug. 2015 - Dec. 2019</span>
                         </div>
                         <div className={"description"}>
-                            <div className={"descriptionNam"}>Degree</div>
+                            <div className={"descriptionName"}>Degree</div>
                             <span>Bachelor's Degree</span>
                         </div>
                         <div className={"description"}>

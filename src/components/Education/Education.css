@@ -31,21 +31,27 @@
 .educationItem {
     display: flex;
     flex-direction: column;
-    padding: 20px 60px;
+    padding: 20px 40px;
     padding-bottom: 50px;
     position: relative;
     border-radius: 10px;
     color: white;
+    /* /* border: 6px solid #9DFF00; */
+    border: 4px solid #0fa;
+    box-shadow: 0 0 2px #fff, 0 0 8px #fff, 0 0 10px #fff, 0 0 30px #0fa inset, 0 0 36px #0fa, 0 0 40px #0fa, 0 0 52px #0fa, 0 0 30px #0fa;
+}
+
+.educationItem::after {
+    content: "";
+    background: #0fa;
+    position: absolute;
+    top: 102%;
+    left: 0;
+    width: 100%;
+    height: 50px;
     overflow: hidden;
-    /* border: 6px solid #9DFF00;
-    box-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #9aff03,
-        0 0 52px #9aff03,
-        0 0 62px #9aff03,
-        0 0 78px #9aff03; */
+    transform: perspective(0.2em) rotateX(10deg);
+    filter: blur(100px)
 }
 
 .educationItemBlinking {
@@ -55,8 +61,7 @@
         0 0 21px #fff,
         0 0 42px #9aff03,
         0 0 52px #9aff03,
-        0 0 62px #9aff03,
-        0 0 78px #9aff03;
+        0 0 62px #9aff03;
     animation: 5s ease-in-out educationBgBlinking;
 }
 
@@ -116,27 +121,33 @@
 .educationItem img {
     background: white;
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     margin: 0 auto;
     margin-top: 10px;
     filter: saturate(155%);
+    margin-bottom: 10px;
 }
 
 .educationItem .description {
-    font-weight: bold;
     padding: 12px 0px;
     text-align: center;
 }
 
-.educationItem .description:not(:last-of-type) {
+.educationItem .description:not(:first-of-type) {
     border-bottom: 1px dotted white;
+}
+
+.educationItem .description:first-of-type {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .educationItem .description .descriptionName {
     font-weight: bold;
     font-size: 20px;
+    display: none;
 }
 
 

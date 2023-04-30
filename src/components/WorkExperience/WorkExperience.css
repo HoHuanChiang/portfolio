@@ -45,19 +45,20 @@
 }
 
 .company .companyContent {
-    background: #2a2a2a;
+    /* background: #2a2a2a; */
     padding: 20px;
     border-radius: 20px;
-    /* border: 10px solid #0fa; */
+    border: 4px solid #0fa;
+    box-sizing: border-box;
     box-shadow:
-        0 0 7px #fff,
+        0 0 2px #fff,
+        0 0 8px #fff,
         0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #0fa,
-        0 0 82px #0fa,
-        0 0 92px #0fa,
-        0 0 102px #0fa,
-        0 0 151px #0fa;
+        0 0 30px #0fa inset,
+        0 0 36px #0fa,
+        0 0 40px #0fa,
+        0 0 52px #0fa,
+        0 0 30px #0fa;
 }
 
 .company .linkToTimeline {
@@ -68,9 +69,9 @@
     width: 200px; */
     border-top: 4px dotted #00e1ff;
     box-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
+        0 0 7px #00e1ff,
+        0 0 10px #00e1ff,
+        0 0 21px #00e1ff,
         0 0 42px #00e1ff,
         0 0 82px #00e1ff,
         0 0 92px #00e1ff,
