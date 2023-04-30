@@ -9,6 +9,11 @@ interface ProjectInfo {
 }
 
 const Project = () => {
+    const preventPropagation = (
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    ) => {
+        event.stopPropagation();
+    };
     const TreeNodeVisualizerDescription = (
         <div className={"projectDescription"}>
             <div>
@@ -20,7 +25,16 @@ const Project = () => {
                 </div>
             </div>
             <div className={"projectDemo"}>
-                <input type="button" value="Check it out" />
+                <a
+                    href={
+                        "https://hohuanchiang.github.io/tree-node-visualizer/"
+                    }
+                    target={"_blank"}
+                    className={"projectLink"}
+                    onClick={preventPropagation}
+                >
+                    Visit Website
+                </a>
             </div>
         </div>
     );
@@ -38,7 +52,14 @@ const Project = () => {
                 </div>
             </div>
             <div className={"projectDemo"}>
-                <input type="button" value="Check it out" />
+                <a
+                    href={"http://hsmap.rice.edu/"}
+                    target={"_blank"}
+                    className={"projectLink"}
+                    onClick={preventPropagation}
+                >
+                    Visit Website
+                </a>
             </div>
         </div>
     );
