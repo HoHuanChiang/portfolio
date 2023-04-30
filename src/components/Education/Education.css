@@ -140,11 +140,10 @@
 }
 
 
-
+/* 
 .education .title,
 .skill .title {
     font-size: 60px;
-    /* text-shadow: grey 10px 5px 10px; */
     letter-spacing: 10px;
     text-align: center;
     margin-bottom: 50px;
@@ -159,7 +158,7 @@
         0 0 102px #0fa,
         0 0 151px #0fa;
 
-}
+} */
 
 .subSkills {
     margin-left: 40px;

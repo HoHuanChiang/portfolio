@@ -232,7 +232,9 @@ const Project = () => {
     };
 
     return (
-        <div className={"projectSectionContainer"}>{renderProjectTabs()}</div>
+        <div className={"projectSectionContainer"} id={"projectSection"}>
+            {renderProjectTabs()}
+        </div>
     );
 };
 

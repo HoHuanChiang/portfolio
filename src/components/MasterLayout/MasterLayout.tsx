@@ -1,20 +1,23 @@
 import React from "react";
 import "./MasterLayout.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Home from "../Home/Home";
 import WorkExperience from "../WorkExperience/WorkExperience";
 import Project from "../Project/Project";
-import Resume from "../Resume/Resume";
 import Education from "../Education/Education";
-import { updateBackground } from "./MasterLayout.trigger";
+import {
+    updateBackground,
+    updateName,
+    updateRoutePath,
+} from "./MasterLayout.trigger";
 
 interface CustomPathProps {
-    path: string;
+    path: Path;
     isCurrentPage: boolean;
     name: string;
 }
 
-enum Path {
+export enum Path {
     Home = "/",
     Education = "/Education",
     WorkExperience = "/workExperience",
@@ -24,10 +27,17 @@ enum Path {
 
 const MasterLayout = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const ref = React.useRef<HTMLDivElement | null>(null);
+    const homeRef = React.useRef<HTMLDivElement | null>(null);
+    const workRef = React.useRef<HTMLDivElement | null>(null);
+    const projectRef = React.useRef<HTMLDivElement | null>(null);
+    const educationRef = React.useRef<HTMLDivElement | null>(null);
 
     React.useEffect(() => {
         updateBackground(ref.current);
+        updateName(ref.current);
+        updateRoutePath(ref.current, navigate);
     }, []);
 
     const isCurrentPage = (path: Path): boolean => {
@@ -63,22 +73,47 @@ const MasterLayout = () => {
         },
     ];
 
+    const onNavItemClick = (path: Path) => {
+        switch (path) {
+            case Path.Home:
+                homeRef.current?.scrollIntoView({ behavior: "smooth" });
+                break;
+            case Path.WorkExperience:
+                workRef.current?.scrollIntoView({ behavior: "smooth" });
+                break;
+            case Path.Projects:
+                projectRef.current?.scrollIntoView({ behavior: "smooth" });
+                break;
+            case Path.Education:
+                educationRef.current?.scrollIntoView({ behavior: "smooth" });
+                break;
+        }
+    };
+
+    const isHomePage = isCurrentPage(Path.Home);
+
     return (
         <div className={"main"} ref={ref}>
-            <div className={"topNavbar"}>Ho-Huan Chiang</div>
+            <div className={"topNavbar"}>
+                <div className={"fullName"}>Ho-Huan Chiang</div>
+                <div className={"preferName"}>Lars Chiang</div>
+            </div>
             <div className={"leftNavbar"}>
                 <nav>
                     {paths.map((pathProps) => {
+                        const linkClassName = pathProps.isCurrentPage
+                            ? isHomePage
+                                ? "isSelectedHome"
+                                : "isSelected"
+                            : "";
+
                         return (
-                            <Link to={pathProps.path}>
-                                <div
-                                    className={
-                                        pathProps.isCurrentPage
-                                            ? "isSelected"
-                                            : ""
-                                    }
-                                >
-                                    {pathProps.name}
+                            <Link
+                                to={pathProps.path}
+                                onClick={() => onNavItemClick(pathProps.path)}
+                            >
+                                <div className={linkClassName}>
+                                    <span>{pathProps.name}</span>
                                 </div>
                             </Link>
                         );
@@ -86,11 +121,18 @@ const MasterLayout = () => {
                 </nav>
             </div>
             <div className={"mainContent"}>
-                <Home />
-                <WorkExperience />
-                <Project />
-                <Education />
-                <Resume />
+                <div ref={homeRef} id="homeRefContainer">
+                    <Home />
+                </div>
+                <div ref={workRef} id="workRefContainer">
+                    <WorkExperience />
+                </div>
+                <div ref={projectRef} id="projectRefContainer">
+                    <Project />
+                </div>
+                <div ref={educationRef} id="educationRefContainer">
+                    <Education />
+                </div>
             </div>
         </div>
     );

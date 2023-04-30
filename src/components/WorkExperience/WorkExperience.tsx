@@ -10,7 +10,7 @@ const WorkExperience = () => {
     }, []);
 
     return (
-        <div className={"workEpContainer"} ref={ref}>
+        <div className={"workEpContainer"} ref={ref} id={"workSection"}>
             <Timeline />
             <div className={"companies"}>
                 <div>
