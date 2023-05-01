@@ -16,14 +16,6 @@ export const updateBackground = (element: HTMLElement | null) => {
             scrub: true,
         },
     });
-    // toWorkSectionTimeline.fromTo(
-    //     "body",
-    //     { backgroundColor: "black" },
-    //     {
-    //         // background: "linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)",
-    //         background: "white",
-    //     }
-    // );
 
     toWorkSectionTimeline.fromTo(
         [
@@ -37,6 +29,23 @@ export const updateBackground = (element: HTMLElement | null) => {
             color: "white",
         }
     );
+
+    toWorkSectionTimeline.fromTo(
+        [
+            element.querySelector(
+                ".topNavbar .contactInfoContainer .contactInfo .linkedIn"
+            ),
+            element.querySelector(
+                ".topNavbar .contactInfoContainer .contactInfo .email"
+            ),
+        ],
+        {
+            fill: "green",
+        },
+        {
+            fill: "white",
+        }
+    );
 };
 
 export const updateName = (element: HTMLElement | null) => {
@@ -48,7 +57,7 @@ export const updateName = (element: HTMLElement | null) => {
         element.querySelector(".topNavbar .preferName"),
         { top: "-100px" },
         {
-            top: "60px",
+            top: "45px",
             scrollTrigger: {
                 trigger: element.querySelector(".workEpContainer"),
                 start: "top 90%",

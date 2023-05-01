@@ -5,9 +5,9 @@
 }
 
 .topNavbar {
-    height: 80px;
+    height: 100px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     font-size: 40px;
     font-weight: bold;
     position: fixed;
@@ -15,14 +15,35 @@
     left: 0;
     width: 100%;
     z-index: 2;
-    padding-left: 50px;
+    /* padding-left: 50px;
     padding-top: 50px;
+    padding-right: 50px; */
+    padding: 0 50px;
     z-index: 100;
+    box-sizing: border-box;
+    background: black;
 }
 
-.topNavbar .fullName {
-    /* display: none; */
+.topNavbar .contactInfoContainer {
+    flex: 1;
+    text-align: right;
 }
+
+
+.topNavbar .contactInfoContainer .contactInfo {
+    /* flex: 1;
+    text-align: right; */
+}
+
+.topNavbar .contactInfoContainer .contactInfo .linkedIn,
+.topNavbar .contactInfoContainer .contactInfo .email {
+    /* fill: white; */
+    height: 30px;
+    width: 30px;
+    margin: 0 4px;
+    cursor: pointer
+}
+
 
 .topNavbar .preferName {
     font-family: "Monoton";
@@ -49,7 +70,7 @@
         0 0 50px #ff03e2;
     background: black;
     position: absolute;
-    top: 60px;
+    top: 45px;
     /* top: -100px; */
 
 }
@@ -71,7 +92,7 @@
 }
 
 .mainContent #projectRefContainer {
-    scroll-margin-top: -100px;
+    scroll-margin-top: 70px
 }
 
 .mainContent #educationRefContainer {
