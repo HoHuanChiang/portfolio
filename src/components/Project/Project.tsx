@@ -17,7 +17,8 @@ const Project = () => {
     const TreeNodeVisualizerDescription = (
         <div className={"projectDescription"}>
             <div>
-                <div>Languages & Tools - React | TypeScript</div>
+                <div className={"projectTitle"}>Tree Node Visualizer</div>
+                <div>React | TypeScript</div>
                 <div className={"spacing"}>
                     Build React application for visualizing breadth-first search
                     (BFS) and depth-first search (DFS) algorithms on a tree,
@@ -42,6 +43,7 @@ const Project = () => {
     const HopeSimpsonDescription = (
         <div className={"projectDescription"}>
             <div>
+                <div className={"projectTitle"}>Hope-Simpson COVID-19</div>
                 <div>React | TypeScript | ScrollTrigger</div>
                 <div className={"spacing"}>
                     Front-end project which involved redesigning the UI, adding
@@ -65,6 +67,9 @@ const Project = () => {
     const MedicalCaseDescription = (
         <div className={"projectDescription"}>
             <div>
+                <div className={"projectTitle"}>
+                    Individual Medical Case Management System
+                </div>
                 <div>.NET Core MVC | C# | MS SQL</div>
                 <div className={"spacing"}>
                     Web model that dynamically generates questionnaires from
@@ -79,14 +84,16 @@ const Project = () => {
     const ObstetricCareDescription = (
         <div className={"projectDescription"}>
             <div>
+                <div className={"projectTitle"}>
+                    Obstetric Patients Care System
+                </div>
                 <div>.NET Core MVC | C# | MS SQL | Java | Swift</div>
                 <div className={"spacing"}>
-                    Mobile apps (IOS, Android) and website for obstetric
-                    patients that import real-time fetal and maternal health
-                    data from a Smart-Clothing product via Bluetooth. The
-                    platform provides medical guidance and personal records,
-                    improving communication with medical professionals and
-                    enhancing the patient experience
+                    Obstetric patient platform with mobile apps (IOS, Android)
+                    and website that imports real-time fetal and maternal health
+                    data from Smart-Clothing via Bluetooth. Provides medical
+                    guidance and personal records, improving communication with
+                    medical professionals and enhancing patient experience.
                 </div>
             </div>
         </div>
@@ -119,7 +126,6 @@ const Project = () => {
     const onProjectTabClick = (index: number) => {
         const newProjects = [...projects];
         newProjects[index].isSelected = !newProjects[index].isSelected;
-        console.log(newProjects[index].isSelected);
         setProjects(newProjects);
     };
 
@@ -141,14 +147,16 @@ const Project = () => {
                             >
                                 {renderCube(
                                     project.isSelected ?? false,
-                                    project.name,
-                                    project.description
+                                    project.name
                                 )}
-                                {project.isSelected && (
-                                    <div className={"expandTitleName"}>
-                                        {project.name}
-                                    </div>
-                                )}
+
+                                <div
+                                    className={`projectDescriptionContainer ${
+                                        project.isSelected ? "show" : "hide"
+                                    }`}
+                                >
+                                    {project.description}
+                                </div>
                             </div>
                         </div>
                     );
@@ -157,92 +165,85 @@ const Project = () => {
         );
     };
 
-    const renderCube = (
-        isSelected: boolean,
-        name: string,
-        projectDescription: JSX.Element
-    ) => {
-        const windowWidth = window.innerWidth;
-        const sizeCSS = isSelected ? `70%` : "150px";
-        const heightCSS = isSelected
-            ? windowWidth < 500
-                ? "400px"
-                : `300px`
-            : "150px";
-        const minWidthCSS = isSelected ? "500px" : "150px";
-        const textAlignCSS = isSelected ? "left" : "center";
+    const renderCube = (isSelected: boolean, name: string) => {
+        const sizeCSS = "150px";
+        const heightCSS = "150px";
+        const textAlignCSS = "center";
         const cubeStyle: React.CSSProperties = {
             width: sizeCSS,
             height: heightCSS,
-            // minWidth: minWidthCSS,
             textAlign: textAlignCSS,
         };
 
         const rightSideStyle: React.CSSProperties = {
             transform: isSelected
-                ? "none"
+                ? "rotateY(-90deg) translateX(-150px) translateZ(50px)"
                 : `translateZ(-${sizeCSS}) rotateY(-90deg)`,
         };
         const topSideStyle: React.CSSProperties = {
-            transform: `translateZ(-${sizeCSS}) rotateY(180deg)`,
+            transform: isSelected
+                ? "translateZ(-200px) rotateY(180deg)"
+                : `translateZ(-${sizeCSS}) rotateY(180deg)`,
         };
         const leftSideStyle: React.CSSProperties = {
             transform: isSelected
-                ? "none"
+                ? "rotateY(90deg) translateX(150px) translateZ(50px)"
                 : `translateZ(-${sizeCSS}) rotateY(90deg)`,
         };
-        const bottomSideStyle: React.CSSProperties = {};
+        const bottomSideStyle: React.CSSProperties = {
+            transform: isSelected ? "translateZ(50px)" : "none",
+        };
         const frontSideStyle: React.CSSProperties = {
-            transform: isSelected ? "none" : "rotateX(90deg) rotateY(180deg)",
+            transform: isSelected
+                ? "rotateX(90deg) rotateY(180deg) translateZ(50px)"
+                : "rotateX(90deg) rotateY(180deg)",
         };
         const backSideStyle: React.CSSProperties = {
-            transform: isSelected ? "none" : "rotateX(-90deg) rotateY(180deg)",
+            transform: isSelected
+                ? "rotateX(-90deg) rotateY(180deg) translateZ(50px)"
+                : "rotateX(-90deg) rotateY(180deg)",
         };
 
-        const cubeClass = isSelected
-            ? "cube-expand"
-            : "cubeSpinning cube-collapse";
-
-        const sideClass = isSelected ? "cubeSpinningOnce-1 " : "side-animation";
+        const sideClass = "side-blinking-animation";
 
         return (
-            <div className={`${!isSelected ? "shadow" : ""}`}>
-                <div className={`cube ${cubeClass}`} style={cubeStyle}>
+            <div className={`cubeContainer`}>
+                <div className={`cube cubeSpinning`} style={cubeStyle}>
                     <div
                         className={`side right ${sideClass}`}
                         style={rightSideStyle}
                     >
-                        <div className={"rotate-45"}>{!isSelected && name}</div>
+                        <div className={"rotate-45"}>{name}</div>
                     </div>
                     <div
                         className={`side top ${sideClass}`}
                         style={topSideStyle}
                     >
-                        <div>{!isSelected && name}</div>
+                        <div>{name}</div>
                     </div>
                     <div
                         className={`side left ${sideClass}`}
                         style={leftSideStyle}
                     >
-                        <div className={"rotate45"}>{!isSelected && name}</div>
+                        <div className={"rotate45"}>{name}</div>
                     </div>
                     <div
                         className={`side bottom ${sideClass}`}
                         style={bottomSideStyle}
                     >
-                        <div>{!isSelected && name}</div>
+                        <div>{name}</div>
                     </div>
                     <div
                         className={`side front ${sideClass}`}
                         style={frontSideStyle}
                     >
-                        <div>{!isSelected ? name : projectDescription}</div>
+                        <div>{name}</div>
                     </div>
                     <div
                         className={`side back ${sideClass}`}
                         style={backSideStyle}
                     >
-                        <div className={"rotate180"}>{!isSelected && name}</div>
+                        <div className={"rotate180"}>{name}</div>
                     </div>
                 </div>
             </div>

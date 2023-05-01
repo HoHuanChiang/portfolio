@@ -22,6 +22,8 @@
     z-index: 100;
     box-sizing: border-box;
     background: black;
+    flex-wrap: wrap;
+    /* background: red; */
 }
 
 .topNavbar .contactInfoContainer {
@@ -48,8 +50,8 @@
 .topNavbar .preferName {
     font-family: "Monoton";
     font-weight: normal;
-    border: 1px solid #ff03e2;
-    padding: 0px 20px;
+    /* border: 1px solid #ff03e2; */
+    padding: 0px 10px;
     text-shadow:
         0 0 7px #ff03e2,
         0 0 10px #ff03e2,
@@ -59,7 +61,7 @@
         0 0 92px #ff03e2,
         0 0 102px #ff03e2,
         0 0 151px #ff03e2;
-    box-shadow:
+    /* box-shadow:
         0 0 5px #ff03e2,
         0 0 7px #ff03e2,
         0 0 10px #ff03e2,
@@ -67,10 +69,10 @@
         0 0 15px #ff03e2,
         0 0 20px #ff03e2,
         0 0 25px #ff03e2,
-        0 0 50px #ff03e2;
+        0 0 50px #ff03e2; */
     background: black;
     position: absolute;
-    top: 45px;
+    bottom: 0px;
     /* top: -100px; */
 
 }

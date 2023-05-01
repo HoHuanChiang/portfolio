@@ -55,9 +55,23 @@ export const updateName = (element: HTMLElement | null) => {
 
     gsap.fromTo(
         element.querySelector(".topNavbar .preferName"),
-        { top: "-100px" },
+        { bottom: "200px" },
         {
-            top: "45px",
+            bottom: "0",
+            scrollTrigger: {
+                trigger: element.querySelector(".workEpContainer"),
+                start: "top 90%",
+                end: "top 80%",
+                scrub: true,
+            },
+        }
+    );
+
+    gsap.fromTo(
+        element.querySelector(".topNavbar .fullName"),
+        { opacity: 1 },
+        {
+            opacity: 0,
             scrollTrigger: {
                 trigger: element.querySelector(".workEpContainer"),
                 start: "top 90%",
