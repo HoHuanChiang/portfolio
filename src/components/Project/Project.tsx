@@ -4,80 +4,152 @@ import "./Project.css";
 interface ProjectInfo {
     name: string;
     isSelected?: boolean;
-    top?: number;
-    left?: number;
-    refTab: MutableRefObject<HTMLDivElement | null>;
+    ref?: MutableRefObject<HTMLDivElement | null>;
+    description: JSX.Element;
 }
 
 const Project = () => {
+    const preventPropagation = (
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    ) => {
+        event.stopPropagation();
+    };
+    const TreeNodeVisualizerDescription = (
+        <div className={"projectDescription"}>
+            <div>
+                <div>Languages & Tools - React | TypeScript</div>
+                <div className={"spacing"}>
+                    Build React application for visualizing breadth-first search
+                    (BFS) and depth-first search (DFS) algorithms on a tree,
+                    complete with a range of customizable settings.
+                </div>
+            </div>
+            <div className={"projectDemo"}>
+                <a
+                    href={
+                        "https://hohuanchiang.github.io/tree-node-visualizer/"
+                    }
+                    target={"_blank"}
+                    className={"projectLink"}
+                    onClick={preventPropagation}
+                >
+                    Visit Website
+                </a>
+            </div>
+        </div>
+    );
+
+    const HopeSimpsonDescription = (
+        <div className={"projectDescription"}>
+            <div>
+                <div>React | TypeScript | ScrollTrigger</div>
+                <div className={"spacing"}>
+                    Front-end project which involved redesigning the UI, adding
+                    various animations including scroll-based animations and
+                    ensuring the project was responsive to different devices.
+                </div>
+            </div>
+            <div className={"projectDemo"}>
+                <a
+                    href={"http://hsmap.rice.edu/"}
+                    target={"_blank"}
+                    className={"projectLink"}
+                    onClick={preventPropagation}
+                >
+                    Visit Website
+                </a>
+            </div>
+        </div>
+    );
+
+    const MedicalCaseDescription = (
+        <div className={"projectDescription"}>
+            <div>
+                <div>.NET Core MVC | C# | MS SQL</div>
+                <div className={"spacing"}>
+                    Web model that dynamically generates questionnaires from
+                    databases based on patient choices in the medical field. The
+                    model allows for deeper, more personalized questioning to
+                    better evaluate the patient's health status.
+                </div>
+            </div>
+        </div>
+    );
+
+    const ObstetricCareDescription = (
+        <div className={"projectDescription"}>
+            <div>
+                <div>.NET Core MVC | C# | MS SQL | Java | Swift</div>
+                <div className={"spacing"}>
+                    Mobile apps (IOS, Android) and website for obstetric
+                    patients that import real-time fetal and maternal health
+                    data from a Smart-Clothing product via Bluetooth. The
+                    platform provides medical guidance and personal records,
+                    improving communication with medical professionals and
+                    enhancing the patient experience
+                </div>
+            </div>
+        </div>
+    );
+
     const PROJECTS: ProjectInfo[] = [
         {
             name: "Tree Node Visualizer",
-            refTab: React.useRef<HTMLDivElement>(null),
+            ref: React.useRef<HTMLDivElement | null>(null),
+            description: TreeNodeVisualizerDescription,
         },
         {
             name: "Hope-Simpson COVID-19",
-            refTab: React.useRef<HTMLDivElement>(null),
+            ref: React.useRef<HTMLDivElement | null>(null),
+            description: HopeSimpsonDescription,
         },
         {
             name: "Individual Medical Case Management System",
-            refTab: React.useRef<HTMLDivElement>(null),
+            ref: React.useRef<HTMLDivElement | null>(null),
+            description: MedicalCaseDescription,
         },
         {
             name: "Obstetric Patients Care System",
-            refTab: React.useRef<HTMLDivElement>(null),
+            ref: React.useRef<HTMLDivElement | null>(null),
+            description: ObstetricCareDescription,
         },
     ];
     const [projects, setProjects] = React.useState<ProjectInfo[]>(PROJECTS);
 
-    React.useLayoutEffect(() => {
-        const newProjects = [...projects];
-        newProjects.forEach((project) => {
-            project.left =
-                project.refTab?.current?.getBoundingClientRect().left;
-            project.top = project.refTab?.current?.getBoundingClientRect().top;
-        });
-        setProjects(newProjects);
-    }, []);
-
     const onProjectTabClick = (index: number) => {
-        setProjects((prevProjects) => {
-            const newProjects = [...prevProjects];
-            newProjects.forEach((project) => (project.isSelected = false));
-            newProjects[index].isSelected = true;
-            return newProjects;
-        });
+        const newProjects = [...projects];
+        newProjects[index].isSelected = !newProjects[index].isSelected;
+        console.log(newProjects[index].isSelected);
+        setProjects(newProjects);
     };
 
     const renderProjectTabs = () => {
         return (
-            <div className={"projectNav"}>
+            <div className={"projects"}>
                 {projects.map((project, index) => {
-                    const isSelected = project.isSelected ?? false;
-
-                    const cubeStyle: React.CSSProperties = {
-                        top: project.top,
-                        left: project.left,
-                        // animation: "5s ease spinning",
-                    };
-
-                    console.log(cubeStyle);
-
+                    const projectContainerStyle = project.isSelected
+                        ? "projectContainer-expand"
+                        : "projectContainer-collapse";
                     return (
                         <div
-                            className={"projectTab"}
-                            onClick={() => onProjectTabClick(index)}
-                            ref={project.refTab}
+                            className={`projectContainer ${projectContainerStyle}`}
+                            ref={project.ref}
                         >
                             <div
-                                style={cubeStyle}
-                                className={`projectCube ${
-                                    isSelected ? "cubeDescription" : ""
-                                }`}
+                                className={"projectTab"}
+                                onClick={() => onProjectTabClick(index)}
                             >
-                                {renderCube(isSelected, 50)}
+                                {renderCube(
+                                    project.isSelected ?? false,
+                                    project.name,
+                                    project.description
+                                )}
+                                {project.isSelected && (
+                                    <div className={"expandTitleName"}>
+                                        {project.name}
+                                    </div>
+                                )}
                             </div>
-                            <div className={"title"}>{project.name}</div>
                         </div>
                     );
                 })}
@@ -85,60 +157,99 @@ const Project = () => {
         );
     };
 
-    const renderCube = (isSelected: boolean, size: number) => {
-        size = isSelected ? 210 : 20;
-        const startSpinning = !isSelected;
+    const renderCube = (
+        isSelected: boolean,
+        name: string,
+        projectDescription: JSX.Element
+    ) => {
+        const sizeCSS = isSelected ? `70%` : "150px";
+        const heightCSS = isSelected ? `300px` : "150px";
+        const minWidthCSS = isSelected ? "500px" : "150px";
+        const textAlignCSS = isSelected ? "left" : "center";
         const cubeStyle: React.CSSProperties = {
-            width: `${size}px`,
-            height: `${size}px`,
-            // animation: startSpinning ? "4s linear spinning infinite" : "",
-            // animation: "4s linear spinning infinite",
-            animationIterationCount: startSpinning ? "infinite" : "1",
+            width: sizeCSS,
+            height: heightCSS,
+            // minWidth: minWidthCSS,
+            textAlign: textAlignCSS,
         };
 
+        const rightSideStyle: React.CSSProperties = {
+            transform: isSelected
+                ? "none"
+                : `translateZ(-${sizeCSS}) rotateY(-90deg)`,
+        };
+        const topSideStyle: React.CSSProperties = {
+            transform: `translateZ(-${sizeCSS}) rotateY(180deg)`,
+        };
+        const leftSideStyle: React.CSSProperties = {
+            transform: isSelected
+                ? "none"
+                : `translateZ(-${sizeCSS}) rotateY(90deg)`,
+        };
+        const bottomSideStyle: React.CSSProperties = {};
+        const frontSideStyle: React.CSSProperties = {
+            transform: isSelected ? "none" : "rotateX(90deg) rotateY(180deg)",
+        };
+        const backSideStyle: React.CSSProperties = {
+            transform: isSelected ? "none" : "rotateX(-90deg) rotateY(180deg)",
+        };
+
+        const cubeClass = isSelected
+            ? "cube-expand"
+            : "cubeSpinning cube-collapse";
+
+        const sideClass = isSelected ? "cubeSpinningOnce-1 " : "side-animation";
+
         return (
-            <div className={`cube`} style={cubeStyle}>
-                <div className={`parent ${isSelected ? "topRightMove" : ""}`}>
+            <div className={`${!isSelected ? "shadow" : ""}`}>
+                <div className={`cube ${cubeClass}`} style={cubeStyle}>
                     <div
-                        className="side right"
-                        style={{
-                            transform: `translateZ(-${size}px) rotateY(-90deg)`,
-                        }}
-                    ></div>
-                    <div
-                        className={`parent ${isSelected ? "topMove" : ""}`}
-                        style={
-                            isSelected
-                                ? { transformOrigin: `left bottom -${size}px` }
-                                : {}
-                        }
+                        className={`side right ${sideClass}`}
+                        style={rightSideStyle}
                     >
-                        <div
-                            className="side top"
-                            style={{ transform: `translateZ(${-size}px)` }}
-                        ></div>
+                        <div className={"rotate-45"}>{!isSelected && name}</div>
                     </div>
-                </div>
-                <div className={`parent ${isSelected ? "leftMove" : ""}`}>
                     <div
-                        className="side left"
-                        style={{
-                            transform: `translateZ(-${size}px) rotateY(90deg)`,
-                        }}
-                    ></div>
-                </div>
-                <div className="side bottom"></div>
-                <div className={`parent ${isSelected ? "downMove" : ""}`}>
-                    <div className="side front"></div>
-                </div>
-                <div className={`parent ${isSelected ? "backMove" : ""}`}>
-                    <div className="side back"></div>
+                        className={`side top ${sideClass}`}
+                        style={topSideStyle}
+                    >
+                        <div>{!isSelected && name}</div>
+                    </div>
+                    <div
+                        className={`side left ${sideClass}`}
+                        style={leftSideStyle}
+                    >
+                        <div className={"rotate45"}>{!isSelected && name}</div>
+                    </div>
+                    <div
+                        className={`side bottom ${sideClass}`}
+                        style={bottomSideStyle}
+                    >
+                        <div>{!isSelected && name}</div>
+                    </div>
+                    <div
+                        className={`side front ${sideClass}`}
+                        style={frontSideStyle}
+                    >
+                        <div>{!isSelected ? name : projectDescription}</div>
+                    </div>
+                    <div
+                        className={`side back ${sideClass}`}
+                        style={backSideStyle}
+                    >
+                        <div className={"rotate180"}>{!isSelected && name}</div>
+                    </div>
                 </div>
             </div>
         );
     };
 
-    return <div className={"container"}>{renderProjectTabs()}</div>;
+    return (
+        <div className={"projectSectionContainer"} id={"projectSection"}>
+            <div className={"sectionTitle"}>Projects</div>
+            {renderProjectTabs()}
+        </div>
+    );
 };
 
 export default Project;

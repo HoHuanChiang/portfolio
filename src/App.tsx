@@ -1,15 +1,12 @@
-import React from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BrowserRouter as Router } from "react-router-dom";
 import MasterLayout from "./components/MasterLayout/MasterLayout";
 
 function App() {
-    return (
-        <div>
-            <Router>
-                <MasterLayout />
-            </Router>
-        </div>
-    );
+    gsap.registerPlugin(ScrollTrigger);
+
+    return <Router>{<MasterLayout />}</Router>;
 }
 
 export default App;

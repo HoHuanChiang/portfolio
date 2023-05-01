@@ -1,35 +1,118 @@
 .main {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
     box-sizing: border-box;
+    position: relative;
+    width: 100%;
 }
 
 .topNavbar {
-    height: 80px;
+    height: 100px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     font-size: 40px;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    /* padding-left: 50px;
+    padding-top: 50px;
+    padding-right: 50px; */
+    padding: 0 50px;
+    z-index: 100;
+    box-sizing: border-box;
+    background: black;
 }
 
-.content {
-    height: calc(100vh - 100px);
-    display: flex;
+.topNavbar .contactInfoContainer {
+    flex: 1;
+    text-align: right;
 }
 
-.innerContent {
-    flex:1;
+
+.topNavbar .contactInfoContainer .contactInfo {
+    /* flex: 1;
+    text-align: right; */
 }
+
+.topNavbar .contactInfoContainer .contactInfo .linkedIn,
+.topNavbar .contactInfoContainer .contactInfo .email {
+    /* fill: white; */
+    height: 30px;
+    width: 30px;
+    margin: 0 4px;
+    cursor: pointer
+}
+
+
+.topNavbar .preferName {
+    font-family: "Monoton";
+    font-weight: normal;
+    border: 1px solid #ff03e2;
+    padding: 0px 20px;
+    text-shadow:
+        0 0 7px #ff03e2,
+        0 0 10px #ff03e2,
+        0 0 21px #ff03e2,
+        0 0 42px #ff03e2,
+        0 0 82px #ff03e2,
+        0 0 92px #ff03e2,
+        0 0 102px #ff03e2,
+        0 0 151px #ff03e2;
+    box-shadow:
+        0 0 5px #ff03e2,
+        0 0 7px #ff03e2,
+        0 0 10px #ff03e2,
+        0 0 12px #ff03e2 inset,
+        0 0 15px #ff03e2,
+        0 0 20px #ff03e2,
+        0 0 25px #ff03e2,
+        0 0 50px #ff03e2;
+    background: black;
+    position: absolute;
+    top: 45px;
+    /* top: -100px; */
+
+}
+
+.mainContent {
+    width: calc(100% - 200px);
+    margin-top: 80px;
+    margin-left: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.mainContent #homeRefContainer {
+    scroll-margin-top: 100px;
+}
+
+.mainContent #workRefContainer {
+    scroll-margin-top: 140px;
+}
+
+.mainContent #projectRefContainer {
+    scroll-margin-top: 70px
+}
+
+.mainContent #educationRefContainer {
+    scroll-margin-top: 100px;
+}
+
 
 .leftNavbar {
     width: 200px;
     font-size: 20px;
     text-align: center;
     font-weight: bold;
+    color: green;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    z-index: 2;
 }
 
-.leftNavbar nav{
+.leftNavbar nav {
     margin-top: 80px;
     display: flex;
     flex-direction: column;
@@ -37,32 +120,66 @@
     align-items: center;
 }
 
-.leftNavbar nav a div{
+.leftNavbar nav a div {
     cursor: pointer;
     position: relative;
     padding: 20px;
     user-select: none;
+    transition: all 0.2s ease;
 }
 
-.leftNavbar nav a{
+.leftNavbar nav a {
     text-decoration: none;
     color: inherit;
 }
 
-.leftNavbar nav a div:before{
+/* .leftNavbar nav a div:before {
     content: '';
     position: absolute;
-    top:0;
-    left:0;
-    height:100%;
-    width:100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     background: url('.././../images/circle.svg') no-repeat;
     background-size: contain;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
-    z-index:-1;
+    z-index: -1;
+}
+*/
+
+.leftNavbar nav a div.isSelected {
+    text-shadow:
+        0 0 7px #ff03e2,
+        0 0 10px #ff03e2,
+        0 0 21px #ff03e2,
+        0 0 42px #ff03e2,
+        0 0 82px #ff03e2,
+        0 0 92px #ff03e2,
+        0 0 102px #ff03e2,
+        0 0 151px #ff03e2;
 }
 
-.leftNavbar nav a div:hover:before, .leftNavbar nav a div.isSelected:before{
-    opacity: 1;
+
+.leftNavbar nav a div.isSelectedHome span {
+    color: white;
+    background: rgb(0, 93, 204);
+    padding: 5px 4px;
+}
+
+.resumeBtn {
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+    .mainContent {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .leftNavbar {
+        display: none;
+    }
 }

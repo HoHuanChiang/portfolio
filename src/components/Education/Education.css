@@ -1,78 +1,138 @@
-
-.container {
+.educationContainer {
     display: flex;
     height: 100%;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 50px;
+    margin: 100px auto;
+    flex-wrap: wrap-reverse;
 }
 
-.education, .skill {
-    width: 50%;
+.education {
     font-size: 18px;
+    color: white;
+}
+
+.skill {
+    width: 550px;
+    font-size: 18px;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .educationGroup {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    column-gap: 40px;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
-.educationItem{
+.educationItem {
     display: flex;
-    flex-direction: column;  
-    padding: 20px 70px;
+    flex-direction: column;
+    padding: 20px 40px;
     padding-bottom: 50px;
     position: relative;
     border-radius: 10px;
     color: white;
+    /* /* border: 6px solid #9DFF00; */
+    border: 4px solid #0fa;
+    box-shadow: 0 0 2px #fff, 0 0 8px #fff, 0 0 10px #fff, 0 0 30px #0fa inset, 0 0 36px #0fa, 0 0 40px #0fa, 0 0 52px #0fa, 0 0 30px #0fa;
+}
+
+
+.educationItem::after {
+    content: "";
+    background: #0fa;
+    position: absolute;
+    top: 102%;
+    left: 0;
+    width: 100%;
+    height: 50px;
     overflow: hidden;
-    animation: 5s ease-in-out infinite float;
+    transform: perspective(0.2em) rotateX(10deg);
+    filter: blur(100px);
 }
 
-@keyframes float {
-    0% {
-        transform: translatey(0px);
-    }
-    50% {
-        transform: translatey(-10px);
-    }
-    100% {
-        transform: translatey(0px);
-    }
+.educationItemBlinking {
+    box-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #9aff03,
+        0 0 52px #9aff03,
+        0 0 62px #9aff03;
+    animation: 5s ease-in-out educationBgBlinking;
 }
 
-.educationItem::before{
+
+@keyframes educationBgBlinking {
+
+    0%,
+    11%,
+    13%,
+    19%,
+    21%,
+    74%,
+    76% {
+        box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #9aff03,
+            0 0 52px #9aff03,
+            0 0 62px #9aff03,
+            0 0 78px #9aff03;
+    }
+
+    12%,
+    20%,
+    75% {
+        box-shadow: none;
+    }
+
+}
+
+/* .educationItem::before {
     content: "";
     position: absolute;
     top: -50%;
     left: -50%;
     background: black;
     border-radius: 100%;
-    background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255, 1) 140%);
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 140%);
     width: 200%;
     height: 150%;
     z-index: -1;
     animation: 2s ease-out flagDrop;
     overflow: hidden;
-}
+} */
 
-@keyframes flagDrop {
+/* @keyframes flagDrop {
     0% {
         top: -10%;
     }
+
     100% {
         top: -50%;
     }
-}
+} */
 
-.educationItem img{
-    background:white;
+.educationItem img {
+    background: white;
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     margin: 0 auto;
     margin-top: 10px;
+    filter: saturate(155%);
+    margin-bottom: 10px;
 }
 
 .educationItem .description {
@@ -80,24 +140,49 @@
     text-align: center;
 }
 
-.educationItem .description:not(:last-of-type) {
+.educationItem .description:not(:first-of-type) {
     border-bottom: 1px dotted white;
 }
 
-.educationItem .description .descriptionName{
-    font-weight: bold;
+.educationItem .description:first-of-type {
     font-size: 20px;
+    font-weight: bold;
 }
 
-.education .title, .skill .title {
+.educationItem .description .descriptionName {
+    font-weight: bold;
+    font-size: 20px;
+    display: none;
+}
+
+
+/* 
+.education .title,
+.skill .title {
     font-size: 60px;
-    /* text-shadow: grey 10px 5px 10px; */
     letter-spacing: 10px;
     text-align: center;
-    margin-bottom: 20px;
-}
+    margin-bottom: 50px;
+    font-family: "Vibur";
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+
+} */
 
 .subSkills {
     margin-left: 40px;
     margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1400px) {
+    .educationItem::after {
+        display: none;
+    }
 }
