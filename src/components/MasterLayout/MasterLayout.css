@@ -32,13 +32,13 @@
 }
 
 
-.topNavbar .contactInfoContainer .contactInfo {
+.contactInfo {
     /* flex: 1;
     text-align: right; */
 }
 
-.topNavbar .contactInfoContainer .contactInfo .linkedIn,
-.topNavbar .contactInfoContainer .contactInfo .email {
+.contactInfo .linkedIn,
+.contactInfo .email {
     /* fill: white; */
     height: 30px;
     width: 30px;
@@ -46,6 +46,18 @@
     cursor: pointer
 }
 
+
+.bottomContactInfo .contactInfo {
+    height: 40px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottomContactInfo .contactInfo .linkedIn,
+.bottomContactInfo .contactInfo .email {
+    fill: white;
+}
 
 .topNavbar .preferName {
     font-family: "Monoton";
@@ -183,5 +195,15 @@
 
     .leftNavbar {
         display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .topNavbar .contactInfoContainer {
+        display: none;
+    }
+
+    .bottomContactInfo .contactInfo {
+        display: flex;
     }
 }

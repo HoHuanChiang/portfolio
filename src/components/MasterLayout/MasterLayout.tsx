@@ -170,6 +170,39 @@ const MasterLayout = () => {
                     <Education />
                 </div>
             </div>
+            <div className={"bottomContactInfo"}>
+                <div className={"contactInfo"}>
+                    <a
+                        href={"https://www.linkedin.com/in/ho-huan-chiang/"}
+                        target={"_blank"}
+                        title={"https://www.linkedin.com/in/ho-huan-chiang/"}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            className={"linkedIn"}
+                        >
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a
+                        href="mailto:chianglars@gmail.com"
+                        title={"chianglars@gmail.com"}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            className={"email"}
+                        >
+                            <path d="M11.99 0l-11.99 8.723v15.277h24v-15.277l-12.01-8.723zm.001 2.472l9.793 7.113-6.735 4.588-3.049-2.47-3.049 2.471-6.737-4.589 9.777-7.113zm-9.991 9.386l5.329 3.63-5.329 4.318v-7.948zm.474 10.142l9.526-7.723 9.526 7.723h-19.052zm19.526-2.194l-5.329-4.317 5.329-3.631v7.948z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
     );
 };
