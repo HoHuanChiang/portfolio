@@ -33,6 +33,8 @@
 }
 
 .educationItem {
+    width: 240px;
+    /* width: 200px; */
     display: flex;
     flex-direction: column;
     padding: 20px 40px;

@@ -162,8 +162,13 @@ const Project = () => {
         name: string,
         projectDescription: JSX.Element
     ) => {
+        const windowWidth = window.innerWidth;
         const sizeCSS = isSelected ? `70%` : "150px";
-        const heightCSS = isSelected ? `300px` : "150px";
+        const heightCSS = isSelected
+            ? windowWidth < 500
+                ? "400px"
+                : `300px`
+            : "150px";
         const minWidthCSS = isSelected ? "500px" : "150px";
         const textAlignCSS = isSelected ? "left" : "center";
         const cubeStyle: React.CSSProperties = {
