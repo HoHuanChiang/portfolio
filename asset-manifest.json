@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.eb741252.css",
-    "main.js": "/portfolio/static/js/main.e46483fe.js",
+    "main.js": "/portfolio/static/js/main.f2799dd8.js",
     "static/media/Resume.pdf": "/portfolio/static/media/Resume.c0ecf750cc3bbbd8345e.pdf",
     "static/media/rice-logo.png": "/portfolio/static/media/rice-logo.fa0844266911d3a08756.png",
     "static/media/cgu-logo.png": "/portfolio/static/media/cgu-logo.352714af969bf3e8babc.png",
     "index.html": "/portfolio/index.html",
     "main.eb741252.css.map": "/portfolio/static/css/main.eb741252.css.map",
-    "main.e46483fe.js.map": "/portfolio/static/js/main.e46483fe.js.map"
+    "main.f2799dd8.js.map": "/portfolio/static/js/main.f2799dd8.js.map"
   },
   "entrypoints": [
     "static/css/main.eb741252.css",
-    "static/js/main.e46483fe.js"
+    "static/js/main.f2799dd8.js"
   ]
 }
