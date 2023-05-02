@@ -38,7 +38,7 @@ const MasterLayout = () => {
         updateBackground(ref.current);
         updateName(ref.current);
         updateRoutePath(ref.current, navigate);
-    }, [navigate]);
+    }, []);
 
     const isCurrentPage = (path: Path): boolean => {
         const currentPathName = location.pathname;
