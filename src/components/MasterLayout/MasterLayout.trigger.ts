@@ -95,10 +95,10 @@ export const updateRoutePath = (
         end: "bottom 50%",
 
         onEnter: () => {
-            navigate(Path.Home);
+            navigate(Path.Home, { replace: true });
         },
         onEnterBack: () => {
-            navigate(Path.Home);
+            navigate(Path.Home, { replace: true });
         },
     });
 
@@ -108,10 +108,10 @@ export const updateRoutePath = (
         end: "bottom 50%",
 
         onEnter: () => {
-            navigate(Path.WorkExperience);
+            navigate(Path.WorkExperience, { replace: true });
         },
         onEnterBack: () => {
-            navigate(Path.WorkExperience);
+            navigate(Path.WorkExperience, { replace: true });
         },
     });
     ScrollTrigger.create({
@@ -120,10 +120,10 @@ export const updateRoutePath = (
         end: "bottom 50%",
 
         onEnter: () => {
-            navigate(Path.Projects);
+            navigate(Path.Projects, { replace: true });
         },
         onEnterBack: () => {
-            navigate(Path.Projects);
+            navigate(Path.Projects, { replace: true });
         },
     });
     ScrollTrigger.create({
@@ -132,10 +132,10 @@ export const updateRoutePath = (
         end: "bottom 50%",
 
         onEnter: () => {
-            navigate(Path.Education);
+            navigate(Path.Education, { replace: true });
         },
         onEnterBack: () => {
-            navigate(Path.Education);
+            navigate(Path.Education, { replace: true });
         },
     });
 };
