@@ -38,7 +38,7 @@ const MasterLayout = () => {
         updateBackground(ref.current);
         updateName(ref.current);
         updateRoutePath(ref.current, navigate);
-    }, []);
+    }, [navigate]);
 
     const isCurrentPage = (path: Path): boolean => {
         const currentPathName = location.pathname;
@@ -103,6 +103,7 @@ const MasterLayout = () => {
                             title={
                                 "https://www.linkedin.com/in/ho-huan-chiang/"
                             }
+                            rel={"noopener noreferrer"}
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -176,6 +177,7 @@ const MasterLayout = () => {
                         href={"https://www.linkedin.com/in/ho-huan-chiang/"}
                         target={"_blank"}
                         title={"https://www.linkedin.com/in/ho-huan-chiang/"}
+                        rel={"noopener noreferrer"}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

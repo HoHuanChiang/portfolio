@@ -33,6 +33,7 @@ const Project = () => {
                     target={"_blank"}
                     className={"projectLink"}
                     onClick={preventPropagation}
+                    rel={"noopener noreferrer"}
                 >
                     Visit Website
                 </a>
@@ -57,6 +58,7 @@ const Project = () => {
                     target={"_blank"}
                     className={"projectLink"}
                     onClick={preventPropagation}
+                    rel={"noopener noreferrer"}
                 >
                     Visit Website
                 </a>

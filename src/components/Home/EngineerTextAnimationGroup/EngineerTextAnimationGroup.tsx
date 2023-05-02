@@ -44,7 +44,7 @@ const EngineerTextAnimationGroup = (props: EngineerTextAnimationGroupProps) => {
                         speed={charSpeed}
                         showBlinkingCursor={showBlinkingCursor}
                         showEndingCursor={
-                            showBlinkingCursor && index == textGroup.length - 1
+                            showBlinkingCursor && index === textGroup.length - 1
                         }
                     />
                 );
@@ -56,6 +56,35 @@ const EngineerTextAnimationGroup = (props: EngineerTextAnimationGroupProps) => {
 const EngineerTextAnimation = (props: EngineerTextAnimationProps) => {
     const { text, delay, speed, showBlinkingCursor, showEndingCursor } = props;
     const [charList, setCharList] = React.useState<EngineerCharProps[]>([]);
+
+    const getCharProps = React.useCallback(
+        (char: string, index: number): EngineerCharProps => {
+            const stop = index * (speed ?? 10) + (delay ?? 0);
+            return {
+                char: char,
+                delayInMillisec: stop,
+                isHidden: true,
+                // isHidden: false,
+                showCursor: false,
+            };
+        },
+        [delay, speed]
+    );
+
+    const showChar = React.useCallback(
+        (index: number) => {
+            setCharList((prevCharList) => {
+                const newCharList = [...prevCharList];
+                newCharList[index].isHidden = false;
+                newCharList[index].showCursor = false;
+                if (showBlinkingCursor && index + 1 < newCharList.length) {
+                    newCharList[index + 1].showCursor = true;
+                }
+                return newCharList;
+            });
+        },
+        [showBlinkingCursor]
+    );
 
     React.useEffect(() => {
         const initialCharList = text
@@ -71,34 +100,11 @@ const EngineerTextAnimation = (props: EngineerTextAnimationProps) => {
         setCharList(initialCharList);
 
         return () => {
-            timeoutIds.map((timeoutId) => {
+            timeoutIds.forEach((timeoutId) => {
                 clearTimeout(timeoutId);
             });
         };
-    }, [text]);
-
-    const getCharProps = (char: string, index: number): EngineerCharProps => {
-        const stop = index * (speed ?? 10) + (delay ?? 0);
-        return {
-            char: char,
-            delayInMillisec: stop,
-            isHidden: true,
-            // isHidden: false,
-            showCursor: false,
-        };
-    };
-
-    const showChar = (index: number) => {
-        setCharList((prevCharList) => {
-            const newCharList = [...prevCharList];
-            newCharList[index].isHidden = false;
-            newCharList[index].showCursor = false;
-            if (showBlinkingCursor && index + 1 < newCharList.length) {
-                newCharList[index + 1].showCursor = true;
-            }
-            return newCharList;
-        });
-    };
+    }, [text, getCharProps, showChar]);
 
     const allCharsShown = (): boolean => {
         if (showEndingCursor && charList.length > 0) {

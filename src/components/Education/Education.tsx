@@ -65,7 +65,10 @@ const Education = () => {
                 <div className={"sectionTitle"}>Education</div>
                 <div className={"educationGroup"}>
                     <div className={"educationItem"} id={"riceEducation"}>
-                        <img src={require("../../images/rice-logo.png")} />
+                        <img
+                            src={require("../../images/rice-logo.png")}
+                            alt={"Rice Logo"}
+                        />
                         <div className={"description"}>
                             <div className={"descriptionName"}>Name</div>
                             <span>Rice University</span>
@@ -92,7 +95,10 @@ const Education = () => {
                         </div>
                     </div>
                     <div className={"educationItem"} id={"cguEducation"}>
-                        <img src={require("../../images/cgu-logo.png")} />
+                        <img
+                            src={require("../../images/cgu-logo.png")}
+                            alt={"CGU Logo"}
+                        />
                         <div className={"description"}>
                             <div className={"descriptionName"}>Name</div>
                             <span>Chang Gung University</span>

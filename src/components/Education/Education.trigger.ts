@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { SkillInfo } from "./Education";
 
 export const setAnimation = (
