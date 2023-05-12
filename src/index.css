@@ -90,7 +90,7 @@ body {
 }
 
 .sectionTitle {
-  color: yellow;
+  color: var(--main-text-color);
   font-size: 35px;
   text-shadow: var(--neon-pink-text-shadow);
   text-align: center;
