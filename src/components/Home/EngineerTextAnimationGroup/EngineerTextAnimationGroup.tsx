@@ -64,7 +64,6 @@ const EngineerTextAnimation = (props: EngineerTextAnimationProps) => {
                 char: char,
                 delayInMillisec: stop,
                 isHidden: true,
-                // isHidden: false,
                 showCursor: false,
             };
         },

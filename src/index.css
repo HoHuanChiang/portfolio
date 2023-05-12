@@ -1,23 +1,98 @@
 body {
   margin: 0;
-  /* font-family: monospace, 'Comic Sans MS', sans-serif; */
   font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
   padding: 0;
-  background: black;
+  background: var(--main-background-color);
+}
+
+:root {
+  --main-background-color: black;
+  --main-text-color: white;
+  --engineer-page-text-color: green;
+  --cube-color1: #cbe58e;
+  --cube-color2: #013026;
+  --cube-color3: #c874b2;
+  --cube-color4: #107e57;
+  --cube-color5: #014760;
+  --cube-color6: #a1ce3f;
+  --neon-pink: #ff03e2;
+  --neon-yellow: #9aff03;
+  --neon-green: #0fa;
+  --neon-blue: #00e1ff;
+  --neon-pink-text-shadow: 0 0 7px var(--neon-pink),
+    0 0 10px var(--neon-pink),
+    0 0 21px var(--neon-pink),
+    0 0 42px var(--neon-pink),
+    0 0 82px var(--neon-pink),
+    0 0 92px var(--neon-pink),
+    0 0 102px var(--neon-pink),
+    0 0 151px var(--neon-pink);
+  --neon-pink-text-shadow-small: 0 0 3px var(--neon-pink),
+    0 0 8px #fff,
+    0 0 10px #fff,
+    0 0 30px var(--neon-pink),
+    0 0 36px var(--neon-pink),
+    0 0 52px var(--neon-pink);
+  --neon-pink-text-shadow-small-inset: 0 0 3px var(--neon-pink),
+    0 0 8px #fff,
+    0 0 10px #fff,
+    0 0 30px var(--neon-pink) inset,
+    0 0 36px var(--neon-pink) inset,
+    0 0 52px var(--neon-pink);
+  --neon-stick: 0 0 3px #fff,
+    0 0 8px #fff,
+    0 0 10px var(--neon-pink),
+    0 0 30px var(--neon-pink),
+    0 0 36px var(--neon-pink),
+    0 0 40px var(--neon-pink),
+    0 0 52px var(--neon-pink);
+  --neon-yellow-text-shadow: 0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px var(--neon-yellow),
+    0 0 82px var(--neon-yellow),
+    0 0 92px var(--neon-yellow),
+    0 0 102px var(--neon-yellow),
+    0 0 151px var(--neon-yellow);
+  --neon-green-text-shadow-small-inset: 0 0 3px var(--neon-green),
+    0 0 8px var(--neon-green),
+    0 0 10px #fff,
+    0 0 30px var(--neon-green) inset,
+    0 0 36px var(--neon-green) inset,
+    0 0 52px var(--neon-green);
+  --neon-green-text-shadow-small: 0 0 2px #fff,
+    0 0 8px #fff,
+    0 0 10px #fff,
+    0 0 30px var(--neon-green) inset,
+    0 0 36px var(--neon-green),
+    0 0 40px var(--neon-green),
+    0 0 52px var(--neon-green),
+    0 0 30px var(--neon-green);
+  --neon-green-text-shadow: 0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px var(--neon-green),
+    0 0 82px var(--neon-green),
+    0 0 92px var(--neon-green),
+    0 0 102px var(--neon-green),
+    0 0 151px var(--neon-green);
+  --neon-blue-text-shadow: 0 0 7px var(--neon-blue),
+    0 0 10px var(--neon-blue),
+    0 0 21px var(--neon-blue),
+    0 0 42px var(--neon-blue),
+    0 0 82px var(--neon-blue),
+    0 0 92px var(--neon-blue),
+    0 0 102px var(--neon-blue),
+    0 0 151px var(--neon-blue);
+  --project-description-background: black;
+  --project-connect-timeline-color: #fff;
+  --project-date-color: #fff;
 }
 
 .sectionTitle {
-  color: white;
+  color: yellow;
   font-size: 35px;
-  text-shadow:
-    0 0 7px #ff03e2,
-    0 0 10px #ff03e2,
-    0 0 21px #ff03e2,
-    0 0 42px #ff03e2,
-    0 0 82px #ff03e2,
-    0 0 92px #ff03e2,
-    0 0 102px #ff03e2,
-    0 0 151px #ff03e2;
+  text-shadow: var(--neon-pink-text-shadow);
   text-align: center;
   display: flex;
   align-items: center;

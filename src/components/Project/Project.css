@@ -10,18 +10,14 @@
     align-items: center;
     flex-wrap: wrap;
     height: 100%;
-    /* padding: 100px; */
     box-sizing: border-box;
     flex-wrap: wrap;
     margin-top: 130px;
 }
 
 .projectContainer {
-    /* min-width: 550px; */
     width: 40%;
     transition: height 1s ease;
-    /* min-height: 500px; */
-    /* height: 1px; */
     position: relative;
     margin-top: 50px;
     box-sizing: border-box;
@@ -37,10 +33,10 @@
 }
 
 .projectDescription {
-    color: white;
+    color: var(--main-text-color);
     display: flex;
     flex-direction: column;
-    background: black;
+    background: var(--project-description-background);
     max-width: 500px;
     margin: 30px;
 }
@@ -58,7 +54,6 @@
     font-size: 25px;
     margin: 20px 0;
     padding-bottom: 10px;
-    /* border-bottom: 3px solid #0fa; */
     position: relative;
     ;
 }
@@ -67,36 +62,21 @@
     content: "";
     height: 3px;
     width: 100%;
-    background: #0fa;
-    box-shadow:
-        0 0 3px #0fa,
-        0 0 8px #fff,
-        0 0 10px #0fa,
-        0 0 30px #0fa inset,
-        0 0 36px #0fa inset,
-        0 0 52px #0fa;
+    background: var(--neon-green);
+    box-shadow: var(--neon-green-text-shadow-small-inset);
     position: absolute;
     bottom: 0;
     left: 0;
 }
 
 .projectDescriptionContainer {
-    /* width: 80%; */
-    /* height: 500px; */
     position: relative;
-    /* float: left; */
     width: 100%;
     min-height: 100%;
     transform-style: preserve-3d;
     transition: all 1s ease-in-out;
     transform-origin: center;
-    box-shadow:
-        0 0 3px #ff03e2,
-        0 0 8px #fff,
-        0 0 10px #fff,
-        0 0 30px #ff03e2 inset,
-        0 0 36px #ff03e2 inset,
-        0 0 52px #ff03e2;
+    box-shadow: var(--neon-pink-text-shadow-small-inset);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,26 +91,12 @@
     width: calc(100% - 20px);
     height: calc(100% - 20px);
     box-sizing: border-box;
-    box-shadow:
-        0 0 3px #ff03e2,
-        0 0 8px #fff,
-        0 0 10px #fff,
-        0 0 30px #ff03e2 inset,
-        0 0 36px #ff03e2 inset,
-        0 0 52px #ff03e2;
-    box-shadow:
-        0 0 3px #ff03e2,
-        0 0 8px #fff,
-        0 0 10px #fff,
-        0 0 30px #ff03e2 inset,
-        0 0 40px #ff03e2,
-        0 0 52px #ff03e2;
+    box-shadow: var(--neon-pink-text-shadow-small);
     z-index: -1;
-    background: black;
+    background: var(--project-description-background);
 }
 
 .projectDescriptionContainer.show {
-
     animation: 1.2s ease-in-out showProject;
 }
 
@@ -163,22 +129,8 @@
     }
 }
 
-.expandTitleName {
-    font-size: 26px;
-    color: white;
-    text-align: center;
-    text-shadow:
-        0 0 7px #014760,
-        0 0 10px #014760,
-        0 0 21px #014760,
-        0 0 22px #014760,
-        0 0 40px #014760;
-    animation: 3s linear projectNameAnimation;
-    transform: translateY(30px);
-}
-
 .projectLink {
-    color: #00e1ff;
+    color: var(--neon-blue);
     text-decoration: none;
     position: relative;
     padding: 10px 20px;
@@ -199,69 +151,28 @@
 .projectLink:before {
     top: 0;
     left: 0;
-    border-top: 2px solid #00e1ff;
-    border-left: 2px solid #00e1ff;
+    border-top: 2px solid var(--neon-blue);
+    border-left: 2px solid var(--neon-blue);
 }
 
 .projectLink:after {
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid #00e1ff;
-    border-right: 2px solid #00e1ff;
+    border-bottom: 2px solid var(--neon-blue);
+    border-right: 2px solid var(--neon-blue);
 }
 
 .projectLink:hover {
     transition: all 0.4s ease 0.4s;
     color: black;
-    background: #00e1ff;
-    box-shadow: 0 0 50px #00e1ff;
+    background: var(--neon-blue);
+    box-shadow: 0 0 50px var(--neon-blue);
 }
 
 .projectLink:hover:before,
 .projectLink:hover::after {
     position: absolute;
     width: 100%;
-    height: 100%;
-}
-
-@keyframes projectNameAnimation {
-    0% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-
-    50% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(30px);
-        opacity: 1;
-    }
-}
-
-/* Below are animatied cube css */
-/* 
-.shadow {
-}
-
-.shadow:after {
-    content: "";
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    height: 20px;
-    transform: translateX(-50%) translateY(-50px);
-    width: 100px;
-    border-radius: 50%;
-    background-color: #888888;
-    filter: blur(4px);
-} */
-
-.cude-expand-container {
-    width: 200px;
-    /* min-width: 400px; */
     height: 100%;
 }
 
@@ -279,41 +190,7 @@
 .cube {
     transform-style: preserve-3d;
     transition: all 2s ease;
-    /* margin-top: 10%; */
 }
-
-
-.cube:hover {
-    /* animation-play-state: paused; */
-}
-
-
-/* .cube:hover .top {
-    transform: translateZ(-200px) rotateY(180deg) !important;
-}
-
-.cube:hover .bottom {
-    transform: translateZ(50px) !important;
-}
-
-
-.cube:hover .left {
-    transform: rotateY(90deg) translateX(150px) translateZ(50px) !important;
-}
-
-.cube:hover .right {
-    transform: rotateY(-90deg) translateX(-150px) translateZ(50px) !important;
-}
-
-.cube:hover .front {
-    transform: rotateX(90deg) rotateY(180deg) translateZ(50px) !important;
-}
-
-.cube:hover .back {
-    transform: rotateX(-90deg) rotateY(180deg) translateZ(50px) !important;
-} */
-
-
 
 .cubeSpinning {
     transform-origin: bottom !important;
@@ -341,9 +218,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    /* border: 4px solid #00e1ff; */
-    box-shadow: 0 0 30px #00e1ff;
+    color: var(--main-text-color);
+    box-shadow: 0 0 30px var(--neon-blue);
 }
 
 .side-blinking-animation {
@@ -369,8 +245,8 @@
             0 0 7px #fff,
             0 0 10px #fff,
             0 0 21px #fff,
-            0 0 22px #00e1ff,
-            0 0 40px #00e1ff;
+            0 0 22px var(--neon-blue),
+            0 0 40px var(--neon-blue);
     }
 
     18% {
@@ -378,8 +254,8 @@
             0 0 7px #fff,
             0 0 10px #fff,
             0 0 21px #fff,
-            0 0 22px #0fa,
-            0 0 40px #0fa;
+            0 0 22px var(--neon-green),
+            0 0 40px var(--neon-green);
     }
 
     22% {
@@ -387,8 +263,8 @@
             0 0 7px #fff,
             0 0 10px #fff,
             0 0 21px #fff,
-            0 0 22px #ff03e2,
-            0 0 40px #ff03e2;
+            0 0 22px var(--neon-pink),
+            0 0 40px var(--neon-pink);
     }
 
     25% {
@@ -396,8 +272,8 @@
             0 0 7px #fff,
             0 0 10px #fff,
             0 0 21px #fff,
-            0 0 22px #00e1ff,
-            0 0 40px #00e1ff;
+            0 0 22px var(--neon-blue),
+            0 0 40px var(--neon-blue);
     }
 
     53% {
@@ -405,8 +281,8 @@
             0 0 7px #fff,
             0 0 10px #fff,
             0 0 21px #fff,
-            0 0 22px #00e1ff,
-            0 0 40px #00e1ff;
+            0 0 22px var(--neon-blue),
+            0 0 40px var(--neon-blue);
     }
 
     57% {
@@ -414,8 +290,8 @@
             0 0 7px #fff,
             0 0 10px #fff,
             0 0 21px #fff,
-            0 0 22px #0fa,
-            0 0 40px #0fa;
+            0 0 22px var(--neon-green),
+            0 0 40px var(--neon-green);
     }
 
     100% {
@@ -423,8 +299,8 @@
             0 0 7px #fff,
             0 0 10px #fff,
             0 0 21px #fff,
-            0 0 22px #ff03e2,
-            0 0 40px #ff03e2;
+            0 0 22px var(--neon-pink),
+            0 0 40px var(--neon-pink);
 
     }
 
@@ -436,31 +312,31 @@
 }
 
 .top {
-    background: #cbe58e;
+    background: var(--cube-color1);
 }
 
 .right {
     transform-origin: left;
-    background: #013026;
+    background: var(--cube-color2);
 }
 
 .bottom {
-    background: #c874b2;
+    background: var(--cube-color3);
 }
 
 .front {
     transform-origin: bottom;
-    background: #107e57;
+    background: var(--cube-color4);
 }
 
 .back {
-    background: #014760;
+    background: var(--cube-color5);
     transform-origin: top;
 }
 
 .left {
     transform-origin: right;
-    background: #a1ce3f;
+    background: var(--cube-color6);
 }
 
 

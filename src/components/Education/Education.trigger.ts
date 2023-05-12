@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { SkillInfo } from "./Education";
+import { SkillInfo } from "./Education.util";
 
 export const setAnimation = (
     element: HTMLDivElement | null,

@@ -1,5 +1,6 @@
 import React from "react";
 import "./HorizontalProgressBar.css";
+import { getBoxShadowColor } from "../../../utils/color.util";
 
 interface HorizontalProgressBarProps {
     max: number;
@@ -14,10 +15,11 @@ const HorizontalProgressBar = (props: HorizontalProgressBarProps) => {
         height: "100%",
         width: `${widthPecentage}%`,
         background: props.color,
-        boxShadow: `0 0 7px ${props.color},0 0 10px #fff,0 0 21px #fff,0 0 42px ${props.color},0 0 82px ${props.color},0 0 92px ${props.color},0 0 102px ${props.color},0 0 151px ${props.color}`,
+        boxShadow: getBoxShadowColor(props.color),
     };
+
     return (
-        <div className={"h-progressBar"}>
+        <div className={"progressBarContainer"}>
             <div
                 style={innerBarStyles}
                 className={"innerProgressBar"}

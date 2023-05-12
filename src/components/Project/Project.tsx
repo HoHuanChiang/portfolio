@@ -1,12 +1,6 @@
-import React, { MutableRefObject } from "react";
+import React from "react";
 import "./Project.css";
-
-interface ProjectInfo {
-    name: string;
-    isSelected?: boolean;
-    ref?: MutableRefObject<HTMLDivElement | null>;
-    description: JSX.Element;
-}
+import { GetProjects, ProjectInfo } from "./Project.util";
 
 const Project = () => {
     const preventPropagation = (
@@ -14,116 +8,40 @@ const Project = () => {
     ) => {
         event.stopPropagation();
     };
-    const TreeNodeVisualizerDescription = (
-        <div className={"projectDescription"}>
-            <div>
-                <div className={"projectTitle"}>Tree Node Visualizer</div>
-                <div>React | TypeScript</div>
-                <div className={"spacing"}>
-                    Build React application for visualizing breadth-first search
-                    (BFS) and depth-first search (DFS) algorithms on a tree,
-                    complete with a range of customizable settings.
-                </div>
-            </div>
-            <div className={"projectDemo"}>
-                <a
-                    href={
-                        "https://hohuanchiang.github.io/tree-node-visualizer/"
-                    }
-                    target={"_blank"}
-                    className={"projectLink"}
-                    onClick={preventPropagation}
-                    rel={"noopener noreferrer"}
-                >
-                    Visit Website
-                </a>
-            </div>
-        </div>
-    );
 
-    const HopeSimpsonDescription = (
-        <div className={"projectDescription"}>
-            <div>
-                <div className={"projectTitle"}>Hope-Simpson COVID-19</div>
-                <div>React | TypeScript | ScrollTrigger</div>
-                <div className={"spacing"}>
-                    Front-end project which involved redesigning the UI, adding
-                    various animations including scroll-based animations and
-                    ensuring the project was responsive to different devices.
+    const renderDefaultProjectDescription = (project: ProjectInfo) => {
+        return (
+            <div className={"projectDescription"}>
+                <div>
+                    <div className={"projectTitle"}>{project.name}</div>
+                    <div>{project.description}</div>
+                    <div className={"spacing"}></div>
                 </div>
+                {project.link && (
+                    <div className={"projectDemo"}>
+                        <a
+                            href={project.link}
+                            target={"_blank"}
+                            className={"projectLink"}
+                            onClick={preventPropagation}
+                            rel={"noopener noreferrer"}
+                        >
+                            Visit Website
+                        </a>
+                    </div>
+                )}
             </div>
-            <div className={"projectDemo"}>
-                <a
-                    href={"http://hsmap.rice.edu/"}
-                    target={"_blank"}
-                    className={"projectLink"}
-                    onClick={preventPropagation}
-                    rel={"noopener noreferrer"}
-                >
-                    Visit Website
-                </a>
-            </div>
-        </div>
-    );
+        );
+    };
 
-    const MedicalCaseDescription = (
-        <div className={"projectDescription"}>
-            <div>
-                <div className={"projectTitle"}>
-                    Individual Medical Case Management System
-                </div>
-                <div>.NET Core MVC | C# | MS SQL</div>
-                <div className={"spacing"}>
-                    Web model that dynamically generates questionnaires from
-                    databases based on patient choices in the medical field. The
-                    model allows for deeper, more personalized questioning to
-                    better evaluate the patient's health status.
-                </div>
-            </div>
-        </div>
+    const [projects, setProjects] = React.useState<ProjectInfo[]>(
+        GetProjects(
+            React.useRef<HTMLDivElement | null>(null),
+            React.useRef<HTMLDivElement | null>(null),
+            React.useRef<HTMLDivElement | null>(null),
+            React.useRef<HTMLDivElement | null>(null)
+        )
     );
-
-    const ObstetricCareDescription = (
-        <div className={"projectDescription"}>
-            <div>
-                <div className={"projectTitle"}>
-                    Obstetric Patients Care System
-                </div>
-                <div>.NET Core MVC | C# | MS SQL | Java | Swift</div>
-                <div className={"spacing"}>
-                    Obstetric patient platform with mobile apps (IOS, Android)
-                    and website that imports real-time fetal and maternal health
-                    data from Smart-Clothing via Bluetooth. Provides medical
-                    guidance and personal records, improving communication with
-                    medical professionals and enhancing patient experience.
-                </div>
-            </div>
-        </div>
-    );
-
-    const PROJECTS: ProjectInfo[] = [
-        {
-            name: "Tree Node Visualizer",
-            ref: React.useRef<HTMLDivElement | null>(null),
-            description: TreeNodeVisualizerDescription,
-        },
-        {
-            name: "Hope-Simpson COVID-19",
-            ref: React.useRef<HTMLDivElement | null>(null),
-            description: HopeSimpsonDescription,
-        },
-        {
-            name: "Individual Medical Case Management System",
-            ref: React.useRef<HTMLDivElement | null>(null),
-            description: MedicalCaseDescription,
-        },
-        {
-            name: "Obstetric Patients Care System",
-            ref: React.useRef<HTMLDivElement | null>(null),
-            description: ObstetricCareDescription,
-        },
-    ];
-    const [projects, setProjects] = React.useState<ProjectInfo[]>(PROJECTS);
 
     const onProjectTabClick = (index: number) => {
         const newProjects = [...projects];
@@ -151,13 +69,12 @@ const Project = () => {
                                     project.isSelected ?? false,
                                     project.name
                                 )}
-
                                 <div
                                     className={`projectDescriptionContainer ${
                                         project.isSelected ? "show" : "hide"
                                     }`}
                                 >
-                                    {project.description}
+                                    {renderDefaultProjectDescription(project)}
                                 </div>
                             </div>
                         </div>

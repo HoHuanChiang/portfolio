@@ -12,7 +12,7 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    color: green;
+    color: var(--engineer-page-text-color);
     padding: 30px;
     box-sizing: border-box;
     word-wrap: break-word;

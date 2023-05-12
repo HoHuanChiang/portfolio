@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { NavigateFunction } from "react-router-dom";
-import { Path } from "./MasterLayout";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Path } from "./MasterLayout.util";
 
 export const updateBackground = (element: HTMLElement | null) => {
     if (element == null) {
@@ -23,10 +23,10 @@ export const updateBackground = (element: HTMLElement | null) => {
             element.querySelector(".leftNavbar"),
         ],
         {
-            color: "green",
+            color: "var(--engineer-page-text-color)",
         },
         {
-            color: "white",
+            color: "var(--main-text-color)",
         }
     );
 
@@ -40,10 +40,10 @@ export const updateBackground = (element: HTMLElement | null) => {
             ),
         ],
         {
-            fill: "green",
+            fill: "var(--engineer-page-text-color)",
         },
         {
-            fill: "white",
+            fill: "var(--main-text-color)",
         }
     );
 };

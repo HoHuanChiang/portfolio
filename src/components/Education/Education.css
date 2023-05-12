@@ -13,13 +13,13 @@
 
 .education {
     font-size: 18px;
-    color: white;
+    color: var(--main-text-color);
 }
 
 .skill {
     width: 550px;
     font-size: 18px;
-    color: white;
+    color: var(--main-text-color);
     padding: 20px;
     box-sizing: border-box;
 }
@@ -34,23 +34,20 @@
 
 .educationItem {
     width: 240px;
-    /* width: 200px; */
     display: flex;
     flex-direction: column;
     padding: 20px 40px;
     padding-bottom: 50px;
     position: relative;
     border-radius: 10px;
-    color: white;
-    /* /* border: 6px solid #9DFF00; */
-    border: 4px solid #0fa;
-    box-shadow: 0 0 2px #fff, 0 0 8px #fff, 0 0 10px #fff, 0 0 30px #0fa inset, 0 0 36px #0fa, 0 0 40px #0fa, 0 0 52px #0fa, 0 0 30px #0fa;
+    border: 4px solid var(--neon-green);
+    box-shadow: var(--neon-green-text-shadow-small);
 }
 
 
 .educationItem::after {
     content: "";
-    background: #0fa;
+    background: var(--neon-green);
     position: absolute;
     top: 102%;
     left: 0;
@@ -60,70 +57,6 @@
     transform: perspective(0.2em) rotateX(10deg);
     filter: blur(100px);
 }
-
-.educationItemBlinking {
-    box-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #9aff03,
-        0 0 52px #9aff03,
-        0 0 62px #9aff03;
-    animation: 5s ease-in-out educationBgBlinking;
-}
-
-
-@keyframes educationBgBlinking {
-
-    0%,
-    11%,
-    13%,
-    19%,
-    21%,
-    74%,
-    76% {
-        box-shadow:
-            0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #9aff03,
-            0 0 52px #9aff03,
-            0 0 62px #9aff03,
-            0 0 78px #9aff03;
-    }
-
-    12%,
-    20%,
-    75% {
-        box-shadow: none;
-    }
-
-}
-
-/* .educationItem::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    background: black;
-    border-radius: 100%;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 140%);
-    width: 200%;
-    height: 150%;
-    z-index: -1;
-    animation: 2s ease-out flagDrop;
-    overflow: hidden;
-} */
-
-/* @keyframes flagDrop {
-    0% {
-        top: -10%;
-    }
-
-    100% {
-        top: -50%;
-    }
-} */
 
 .educationItem img {
     background: white;
@@ -143,7 +76,7 @@
 }
 
 .educationItem .description:not(:first-of-type) {
-    border-bottom: 1px dotted white;
+    border-bottom: 1px dotted var(--main-text-color);
 }
 
 .educationItem .description:first-of-type {
@@ -155,32 +88,6 @@
     font-weight: bold;
     font-size: 20px;
     display: none;
-}
-
-
-/* 
-.education .title,
-.skill .title {
-    font-size: 60px;
-    letter-spacing: 10px;
-    text-align: center;
-    margin-bottom: 50px;
-    font-family: "Vibur";
-    text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #0fa,
-        0 0 82px #0fa,
-        0 0 92px #0fa,
-        0 0 102px #0fa,
-        0 0 151px #0fa;
-
-} */
-
-.subSkills {
-    margin-left: 40px;
-    margin-bottom: 40px;
 }
 
 @media screen and (max-width: 1400px) {
